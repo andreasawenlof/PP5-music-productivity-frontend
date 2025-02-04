@@ -1,6 +1,8 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import styles from './TracksPage.module.css';
+import { Dropdown } from 'react-bootstrap';
+import DropDown from '../../components/DropDown';
 
 function TracksPage() {
     return (
@@ -17,18 +19,10 @@ function TracksPage() {
                     With supporting text below as a natural lead-in to
                     additional content.
                 </Card.Text>
-                <Button className={`${styles.Button} text-center `}>
-                    Go somewhere
-                </Button>
-                <Button className={`${styles.Button} text-center `}>
-                    Go somewhere
-                </Button>
-                <Button className={`${styles.Button} text-center `}>
-                    Go somewhere
-                </Button>
-                <Button className={`${styles.Button} text-center `}>
-                    Go somewhere
-                </Button>
+                <DropDown />
+                <DropDown />
+                <DropDown />
+                <DropDown />
             </Card.Body>
         </Card>
     );
