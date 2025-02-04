@@ -1,0 +1,14 @@
+.CardHeader {
+    background: pink;
+}
+
+.Card {
+    margin-top: 20px;
+}
+
+.Button {
+    background-color: purple;
+    color: white;
+    width: 20%;
+    align-items: center;
+}
