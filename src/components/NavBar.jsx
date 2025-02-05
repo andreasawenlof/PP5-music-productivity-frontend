@@ -5,12 +5,15 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import styles from './NavBar.module.css';
+import { useAuth } from '../contexts/AuthContext';
+import { NavLink } from 'react-router-dom';
 
 function NavBar() {
+    const { user, logout } = useAuth();
     return (
         <Navbar
-            expand='lg'
-            className={`bg-body-tertiary ${styles.NavBar} `}
+            expand='md'
+            className={`bg-body-tertiary ${styles.NavBar}`}
             fixed='top'
         >
             <Container fluid>
@@ -22,10 +25,62 @@ function NavBar() {
                         style={{ maxHeight: '100px' }}
                         navbarScroll
                     >
-                        <Nav.Link>Home</Nav.Link>
-                        <Nav.Link>Profiles</Nav.Link>
+                        <Nav.Item>
+                            <NavLink
+                                className='nav-link'
+                                to='/'
+                            >
+                                Home
+                            </NavLink>
+                        </Nav.Item>
+                        <Nav.Item>
+                            <NavLink
+                                className='nav-link'
+                                to='/profiles'
+                            >
+                                Profiles
+                            </NavLink>
+                        </Nav.Item>
+                        <Nav.Item>
+                            {user ? (
+                                <>
+                                    <Nav.Item>
+                                        <span className='nav-link'>
+                                            Welcome, {user.username}!
+                                        </span>
+                                    </Nav.Item>
+                                    <Nav.Item>
+                                        <button
+                                            className='btn btn-link nav-link'
+                                            onClick={logout}
+                                        >
+                                            Logout
+                                        </button>
+                                    </Nav.Item>
+                                </>
+                            ) : (
+                                <>
+                                    <Nav.Item>
+                                        <NavLink
+                                            className='nav-link'
+                                            to='/login'
+                                        >
+                                            Login
+                                        </NavLink>
+                                    </Nav.Item>
+                                    <Nav.Item>
+                                        <NavLink
+                                            className='nav-link'
+                                            to='/signup'
+                                        >
+                                            Sign Up
+                                        </NavLink>
+                                    </Nav.Item>
+                                </>
+                            )}
+                        </Nav.Item>
                         <NavDropdown
-                            title='Link'
+                            title='More'
                             id='navbarScrollingDropdown'
                         >
                             <NavDropdown.Item>Action</NavDropdown.Item>
