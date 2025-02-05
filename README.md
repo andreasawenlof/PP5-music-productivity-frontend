@@ -1,8 +1,8 @@
-# 🎵 Music Productivity Frontend
+# 🎵 MP App (Frontend)
 
 ## 📌 Table of Contents
 
-- [🎵 Music Productivity Frontend](#-music-productivity-frontend)
+- [🎵 MP App (Frontend)](#-mp-app-frontend)
   - [📌 Table of Contents](#-table-of-contents)
   - [🚀 Introduction](#-introduction)
   - [🔗 Features](#-features)
@@ -16,7 +16,7 @@
 
 ## 🚀 Introduction
 
-The **Music Productivity Frontend** is a React-based web application designed to interact with the **Music Productivity API**, providing composers and producers with an intuitive interface to manage their music projects efficiently. Users can track, organize, and review songs, albums, and feedback within a structured system.
+The **MP App** is a React-based web application designed to interact with the **MP App API**, providing composers and producers with an intuitive interface to manage their music projects efficiently. Users can track, organize, and review songs, albums, and feedback within a structured system.
 
 ---
 
@@ -89,3 +89,5 @@ The **Music Productivity Frontend** is a React-based web application designed to
 ## 📜 License
 
 > **Note**: This project is submitted for educational purposes only and is not open-source. No external use, copying, or distribution is allowed beyond the scope of this assessment.
+>
+> For inquiries regarding usage or collaboration, please contact the project owner.

@@ -1,6 +1,6 @@
 import styles from './App.module.css';
+import AppRoutes from './AppRoutes';
 import NavBar from './components/NavBar';
-import TracksPage from './pages/tracks/tracksPage';
 import { Col, Container, Row } from 'react-bootstrap';
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
                         md={12}
                         className='w-100'
                     >
-                        <TracksPage />
+                        <AppRoutes />
                     </Col>
                 </Row>
             </Container>
