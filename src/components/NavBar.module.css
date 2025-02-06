@@ -1,0 +1,67 @@
+/* 🔥 Sexy Dark Mode Navbar */
+.navbar {
+    background-color: #222;
+    padding: 10px 20px;
+    border-bottom: 2px solid #444;
+}
+
+/* 🎼 Brand Styling */
+.brand {
+    color: #ffcc00 !important;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+/* 🚀 Nav Links */
+.navLink {
+    color: white;
+    margin-right: 15px;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+    font-size: 1rem;
+}
+
+.navLink:hover {
+    color: #ffcc00 !important;
+}
+
+/* 😎 Welcome Text */
+.welcome {
+    color: white;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+/* 🎵 Create Track Button */
+.createTrackBtn {
+    background-color: #ffcc00;
+    color: black;
+    font-weight: bold;
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    margin-left: 10px;
+    transition: background 0.3s ease-in-out;
+}
+
+.createTrackBtn:hover {
+    background-color: #ffdb4d;
+}
+
+/* 🚪 Logout Button */
+.logoutBtn {
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.logoutBtn:hover {
+    background-color: #ff4444;
+    border-color: #ff4444;
+}

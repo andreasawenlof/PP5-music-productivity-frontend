@@ -1,14 +1,32 @@
-.CardHeader {
-    background: pink;
-}
-
-.Card {
-    margin-top: 20px;
-}
-
-.Button {
-    background-color: purple;
-    color: white;
-    width: 20%;
+.trackPageContainer {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    background: #121212; /* Dark mode background */
+    color: #eee; /* Light text for readability */
+    min-height: 100vh;
+}
+
+.trackList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.trackCard {
+    width: 100%; /* Make each card take up the full width */
+    max-width: 800px; /* Optional: Limit the maximum width of each card */
+    margin: 0 auto; /* Center the card horizontally */
+}
+
+@media (max-width: 768px) {
+    .trackList {
+        flex-direction: column;
+        align-items: center;
+    }
 }

@@ -1,14 +1,13 @@
 // src/pages/TracksPage.jsx
 import { useEffect, useState } from 'react';
-import { axiosReq } from '../api/axiosDefaults';
-import TrackCard from '../components/TrackCard';
+import { axiosReq } from '../../api/axiosDefaults';
+import TrackCard from './TrackCard';
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import Spinner from 'react-bootstrap/Spinner';
 import Alert from 'react-bootstrap/Alert';
+import styles from './TracksPage.module.css'; // ✅ CSS Import
 
-function TracksPage() {
+const TracksPage = () => {
     const [tracks, setTracks] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -28,8 +27,8 @@ function TracksPage() {
     }, []);
 
     return (
-        <Container>
-            <h2 className='my-4 text-center'>🎵 Available Tracks</h2>
+        <Container className={styles.tracksPageContainer}>
+            <h2 className='my-4 mt-5 mb-5 text-center'>🎵 Available Tracks</h2>
             {loading && (
                 <Spinner
                     animation='border'
@@ -37,22 +36,18 @@ function TracksPage() {
                 />
             )}
             {error && <Alert variant='danger'>{error}</Alert>}
-            <Row>
+            <div className={styles.trackList}>
                 {tracks.map((track) => (
-                    <Col
+                    <div
                         key={track.id}
-                        md={6}
-                        lg={4}
-                        className='mb-4'
+                        className={styles.trackCard}
                     >
                         <TrackCard track={track} />
-                    </Col>
+                    </div>
                 ))}
-            </Row>
+            </div>
         </Container>
     );
-}
+};
 
 export default TracksPage;
-
-// 🚀 This page fetches tracks, shows them in Bootstrap cards, and handles errors/loading.

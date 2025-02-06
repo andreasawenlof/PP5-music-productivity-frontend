@@ -1,0 +1,23 @@
+.createTrackContainer {
+    max-width: 600px;
+    margin: auto;
+    padding: 2rem;
+    border-radius: 12px;
+    background: #222;
+    color: white;
+    box-shadow: 0px 4px 12px rgba(255, 255, 255, 0.1);
+}
+
+h2 {
+    color: #ffcc00;
+}
+
+button {
+    background-color: #ffcc00;
+    color: black;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #ffdb4d;
+}
