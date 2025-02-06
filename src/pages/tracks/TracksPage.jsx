@@ -26,6 +26,7 @@ const TracksPage = () => {
         fetchTracks();
     }, []);
 
+    // ✅ Pass setTracks into TrackCard so it can remove deleted tracks
     return (
         <Container className={styles.tracksPageContainer}>
             <h2 className='my-4 mt-5 mb-5 text-center'>🎵 Available Tracks</h2>
@@ -42,7 +43,11 @@ const TracksPage = () => {
                         key={track.id}
                         className={styles.trackCard}
                     >
-                        <TrackCard track={track} />
+                        <TrackCard
+                            track={track}
+                            setTracks={setTracks} // ✅ THIS WAS MISSING!
+                            tracks={tracks} // ✅ Pass current tracks so we can filter on delete
+                        />
                     </div>
                 ))}
             </div>

@@ -2,13 +2,17 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { useAuth } from '../../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import styles from './TrackCard.module.css'; // ✅ Corrected Import
+import styles from './TrackCard.module.css';
+import btnStyles from '../../components/Button.module.css';
 import { trackPropType } from '../../propTypes/trackPropTypes';
+import useDeleteTrack from '../../hooks/useDeleteTrack';
 
-const TrackCard = ({ track }) => {
+const TrackCard = ({ track, setTracks }) => {
     const { user } = useAuth();
     const navigate = useNavigate();
     const isOwner = user && user.pk === track.assigned_composer;
+
+    const handleDelete = useDeleteTrack(setTracks); // ✅ Using the hook
 
     return (
         <Card
@@ -51,22 +55,21 @@ const TrackCard = ({ track }) => {
                     {isOwner && (
                         <div className='d-flex flex-column'>
                             <Button
-                                variant='primary'
                                 size='sm'
-                                className='mb-1'
+                                className={btnStyles.edit}
                                 onClick={(e) => {
                                     e.stopPropagation();
-                                    navigate(`/tracks/edit/${track.id}`);
+                                    navigate(`/tracks/${track.id}/edit`);
                                 }}
                             >
                                 Edit
                             </Button>
                             <Button
-                                variant='danger'
+                                className={btnStyles.delete}
                                 size='sm'
                                 onClick={(e) => {
                                     e.stopPropagation();
-                                    console.log('Delete track');
+                                    handleDelete(track.id); // ✅ Calls the hook function
                                 }}
                             >
                                 Delete

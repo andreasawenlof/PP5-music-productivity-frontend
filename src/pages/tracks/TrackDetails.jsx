@@ -1,22 +1,23 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { axiosReq, axiosRes } from '../../api/axiosDefaults';
+import { axiosReq } from '../../api/axiosDefaults';
 import { useAuth } from '../../contexts/AuthContext';
-import styles from './TrackDetails.module.css'; // ✅ Corrected Import
+import styles from './TrackDetails.module.css';
+import btnStyles from '../../components/Button.module.css';
+import useDeleteTrack from '../../hooks/useDeleteTrack'; // ✅ Import delete hook
 
 const TrackDetails = () => {
     const { id } = useParams();
     const [track, setTrack] = useState(null);
-    const [isEditing, setIsEditing] = useState(false);
-    const [editedTitle, setEditedTitle] = useState('');
+    const navigate = useNavigate();
     const { user } = useAuth();
+    const handleDelete = useDeleteTrack(); // ✅ Use delete hook
 
     useEffect(() => {
         const fetchTrack = async () => {
             try {
                 const { data } = await axiosReq.get(`/api/tracks/${id}/`);
                 setTrack(data);
-                setEditedTitle(data.title);
             } catch (err) {
                 console.error('Error fetching track:', err);
             }
@@ -28,46 +29,9 @@ const TrackDetails = () => {
 
     const isOwner = user && user.pk === track.assigned_composer;
 
-    const toggleEdit = () => {
-        setIsEditing((prev) => !prev);
-    };
-
-    const handleSave = async () => {
-        try {
-            const { data } = await axiosRes.put(`/api/tracks/${id}/`, {
-                title: editedTitle,
-            });
-            setTrack(data);
-            setIsEditing(false);
-        } catch (err) {
-            console.error('Error updating track:', err);
-        }
-    };
-
-    const handleDelete = async () => {
-        if (window.confirm('Are you sure you want to delete this track?')) {
-            try {
-                await axiosRes.delete(`/api/tracks/${id}/`);
-                alert('Track deleted successfully!');
-                window.location.href = '/tracks';
-            } catch (err) {
-                console.error('Error deleting track:', err);
-            }
-        }
-    };
-
     return (
         <div className={styles.trackDetailsContainer}>
-            {isEditing ? (
-                <input
-                    type='text'
-                    value={editedTitle}
-                    onChange={(e) => setEditedTitle(e.target.value)}
-                    className={styles.editInput}
-                />
-            ) : (
-                <h2 className={styles.trackTitle}>{track.title}</h2>
-            )}
+            <h2 className={styles.trackTitle}>{track.title}</h2>
 
             <p className={styles.trackMeta}>
                 {track?.album_name || 'No Album'}
@@ -86,24 +50,15 @@ const TrackDetails = () => {
 
             {isOwner && (
                 <div className={styles.buttonsContainer}>
-                    {isEditing ? (
-                        <button
-                            className={styles.edit}
-                            onClick={handleSave}
-                        >
-                            Save
-                        </button>
-                    ) : (
-                        <button
-                            className={styles.edit}
-                            onClick={toggleEdit}
-                        >
-                            Edit
-                        </button>
-                    )}
                     <button
-                        className={styles.delete}
-                        onClick={handleDelete}
+                        className={btnStyles.edit}
+                        onClick={() => navigate(`/tracks/${track.id}/edit`)}
+                    >
+                        Edit
+                    </button>
+                    <button
+                        className={btnStyles.delete}
+                        onClick={() => handleDelete(track.id)} // ✅ Pass the track.id
                     >
                         Delete
                     </button>

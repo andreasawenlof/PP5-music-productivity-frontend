@@ -30,40 +30,6 @@
     color: #ffcc00;
 }
 
-.buttonsContainer {
-    display: flex;
-    gap: 10px;
-    margin-top: 15px;
-}
-
-.edit {
-    background-color: #ffcc00;
-    color: #222;
-    padding: 10px 16px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background 0.2s ease-in-out;
-}
-
-.edit:hover {
-    background-color: #ffdb4d;
-}
-
-.delete {
-    background-color: #ff4444;
-    color: white;
-    padding: 10px 16px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background 0.2s ease-in-out;
-}
-
-.delete:hover {
-    background-color: #ff6666;
-}
-
 @media (min-width: 1024px) {
     .trackDetailsContainer {
         max-width: 1100px;

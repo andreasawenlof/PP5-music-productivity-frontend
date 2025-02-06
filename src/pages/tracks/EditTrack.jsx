@@ -1,70 +1,95 @@
-import { useActionState, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { axiosReq } from '../../api/axiosDefaults';
-import styles from './CreateEditTrack.module.css'; // ✅ CSS Import
+import { useEffect, useState, useActionState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { axiosReq, axiosRes } from '../../api/axiosDefaults';
+import styles from './CreateEditTrack.module.css';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Alert from 'react-bootstrap/Alert';
 
 const EditTrack = () => {
+    const { id } = useParams(); // ✅ Get track ID from URL
     const navigate = useNavigate();
+
+    // ✅ State for form options
     const [albums, setAlbums] = useState([]);
     const [moods, setMoods] = useState([]);
     const [genres, setGenres] = useState([]);
     const [projectTypes, setProjectTypes] = useState([]);
+    const [track, setTrack] = useState(null);
 
+    // ✅ Form state with actionState
     const [state, formAction] = useActionState(
         async (prev, formData) => {
             try {
-                const response = await axiosReq.post('/api/tracks/', formData);
+                const response = await axiosRes.put(
+                    `/api/tracks/${id}/`,
+                    formData
+                );
                 navigate(`/tracks/${response.data.id}`);
             } catch (err) {
-                return { error: 'Failed to edit track. Please try again.' };
+                return { error: 'Failed to update track. Please try again.' };
             }
         },
         { error: null }
     );
 
+    // ✅ Fetch track data and form options
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const albumResponse = await axiosReq.get('/api/albums/');
-                const moodResponse = await axiosReq.get('/api/moods/');
-                const genreResponse = await axiosReq.get('/api/genres/');
-                const projectTypeResponse = await axiosReq.get(
-                    '/api/project-types/'
-                );
+                const [
+                    { data: trackData },
+                    { data: albums },
+                    { data: moods },
+                    { data: genres },
+                    { data: projectTypes },
+                ] = await Promise.all([
+                    axiosReq.get(`/api/tracks/${id}/`),
+                    axiosReq.get('/api/albums/'),
+                    axiosReq.get('/api/moods/'),
+                    axiosReq.get('/api/genres/'),
+                    axiosReq.get('/api/project-types/'),
+                ]);
 
-                setAlbums(albumResponse.data);
-                setMoods(moodResponse.data);
-                setGenres(genreResponse.data);
-                setProjectTypes(projectTypeResponse.data);
+                setTrack(trackData);
+                setAlbums(albums);
+                setMoods(moods);
+                setGenres(genres);
+                setProjectTypes(projectTypes);
             } catch (err) {
-                console.error('Failed to fetch data:', err);
+                console.error('Failed to fetch track data:', err);
             }
         };
 
         fetchData();
-    }, []);
+    }, [id]);
+
+    if (!track) return <p>Loading...</p>;
 
     return (
         <Container className={styles.createTrackContainer}>
-            <h2 className='text-center mb-4'>🎼 Create a New Track</h2>
+            <h2 className='text-center mb-4'>🎼 Edit Track</h2>
             {state.error && <Alert variant='danger'>{state.error}</Alert>}
+
             <Form action={formAction}>
                 <Form.Group controlId='title'>
                     <Form.Label>Track Title</Form.Label>
                     <Form.Control
                         type='text'
                         name='title'
+                        defaultValue={track.title}
                         required
                     />
                 </Form.Group>
+
                 <Form.Group controlId='album'>
                     <Form.Label>Album Name</Form.Label>
-                    <Form.Select name='album'>
-                        <option value=''>No Album</option> {/* Add this line */}
+                    <Form.Select
+                        name='album'
+                        defaultValue={track.album || ''}
+                    >
+                        <option value=''>No Album</option>
                         {albums.map((album) => (
                             <option
                                 key={album.id}
@@ -75,9 +100,13 @@ const EditTrack = () => {
                         ))}
                     </Form.Select>
                 </Form.Group>
+
                 <Form.Group controlId='mood'>
                     <Form.Label>Mood</Form.Label>
-                    <Form.Select name='mood'>
+                    <Form.Select
+                        name='mood'
+                        defaultValue={track.mood}
+                    >
                         {moods.map((mood) => (
                             <option
                                 key={mood.id}
@@ -88,9 +117,13 @@ const EditTrack = () => {
                         ))}
                     </Form.Select>
                 </Form.Group>
+
                 <Form.Group controlId='genre'>
                     <Form.Label>Genre</Form.Label>
-                    <Form.Select name='genre'>
+                    <Form.Select
+                        name='genre'
+                        defaultValue={track.genre}
+                    >
                         {genres.map((genre) => (
                             <option
                                 key={genre.id}
@@ -101,9 +134,13 @@ const EditTrack = () => {
                         ))}
                     </Form.Select>
                 </Form.Group>
+
                 <Form.Group controlId='project_type'>
                     <Form.Label>Project Type</Form.Label>
-                    <Form.Select name='project_type'>
+                    <Form.Select
+                        name='project_type'
+                        defaultValue={track.project_type}
+                    >
                         {projectTypes.map((projectType) => (
                             <option
                                 key={projectType.id}
@@ -117,7 +154,10 @@ const EditTrack = () => {
 
                 <Form.Group controlId='status'>
                     <Form.Label>Status</Form.Label>
-                    <Form.Select name='status'>
+                    <Form.Select
+                        name='status'
+                        defaultValue={track.status}
+                    >
                         <option value='not_started'>Not Started</option>
                         <option value='in_production'>In Production</option>
                         <option value='ready_for_mixing'>
@@ -134,15 +174,16 @@ const EditTrack = () => {
                         type='checkbox'
                         name='vocals_needed'
                         label='Vocals Needed'
+                        defaultChecked={track.vocals_needed}
                     />
                 </Form.Group>
 
                 <Button
-                    variant='primary'
+                    variant='warning'
                     type='submit'
                     className='mt-3'
                 >
-                    Create Track
+                    Update Track
                 </Button>
             </Form>
         </Container>
