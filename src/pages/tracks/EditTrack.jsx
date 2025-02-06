@@ -85,6 +85,7 @@ const EditTrack = () => {
                         type='text'
                         name='title'
                         required
+                        defaultValue={track.title}
                     />
                 </Form.Group>
                 <Form.Group controlId='album'>
@@ -92,6 +93,7 @@ const EditTrack = () => {
                     <Form.Select
                         className={`${formStyles.formInput}`}
                         name='album'
+                        defaultValue={track.album || ''}
                     >
                         <option value=''>No Album</option> {/* Add this line */}
                         {albums.map((album) => (
@@ -109,6 +111,7 @@ const EditTrack = () => {
                     <Form.Select
                         className={`${formStyles.formInput}`}
                         name='mood'
+                        defaultValue={track.mood}
                     >
                         {moods.map((mood) => (
                             <option
@@ -125,6 +128,7 @@ const EditTrack = () => {
                     <Form.Select
                         className={`${formStyles.formInput}`}
                         name='genre'
+                        defaultValue={track.genre}
                     >
                         {genres.map((genre) => (
                             <option
@@ -141,6 +145,7 @@ const EditTrack = () => {
                     <Form.Select
                         className={`${formStyles.formInput}`}
                         name='project_type'
+                        defaultValue={track.project_type}
                     >
                         {projectTypes.map((projectType) => (
                             <option
@@ -158,6 +163,7 @@ const EditTrack = () => {
                     <Form.Select
                         className={`${formStyles.formInput}`}
                         name='status'
+                        defaultValue={track.status}
                     >
                         <option value='not_started'>Not Started</option>
                         <option value='in_production'>In Production</option>
@@ -175,6 +181,16 @@ const EditTrack = () => {
                         type='checkbox'
                         name='vocals_needed'
                         label='Vocals Needed'
+                        defaultChecked={track.vocals_needed}
+                    />
+                </Form.Group>
+                <Form.Group controlId='notes'>
+                    <Form.Label>Notes</Form.Label>
+                    <Form.Control
+                        className={`${formStyles.textAreaInput}`}
+                        type='textarea'
+                        name='notes'
+                        defaultValue={track.notes}
                     />
                 </Form.Group>
 

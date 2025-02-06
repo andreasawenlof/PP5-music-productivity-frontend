@@ -14,11 +14,6 @@ const TrackCard = ({ track, setTracks }) => {
 
     const handleDelete = useDeleteTrack(setTracks); // ✅ Using the hook
 
-    console.log('Track Card Rendered');
-    console.log('User:', user);
-    console.log('Track Assigned Composer:', track.assigned_composer);
-    console.log('Is Owner?', isOwner);
-
     return (
         <Card
             className={`mb-2 ${styles.trackCard} ${styles.clickable}`}

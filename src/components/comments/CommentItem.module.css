@@ -20,6 +20,10 @@
     border: 2px solid #ffcc00; /* Djurgården color accent */
 }
 
+.avatar:hover {
+    transform: scale(1.1);
+}
+
 /* 🗨️ Comment Content */
 .commentContent {
     flex-grow: 1;
@@ -27,9 +31,10 @@
 }
 
 .commentAuthor {
-    font-weight: bold;
+    font-weight: 700;
     color: #fff;
-    font-size: 14px;
+    font-size: 18px;
+    text-decoration: none;
 }
 
 .commentText {

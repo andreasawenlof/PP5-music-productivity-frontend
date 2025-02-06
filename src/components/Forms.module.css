@@ -46,3 +46,28 @@
     /* Edge 12 -18 */
     color: #888;
 }
+/* ✍️ Input field */
+.textAreaInput {
+    width: 100%;
+    max-width: 670px;
+    padding: 2px 14px 14px 2px;
+    border: none;
+    border-radius: 8px;
+    background: #333;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    resize: vertical;
+    min-height: 120px; /* Ensures textarea doesn't look like an input field */
+    margin-bottom: 10px;
+    transition: all 0.2s ease-in-out;
+}
+
+/* ✍️ Input focus effect */
+.textAreaInput:focus {
+    outline: none;
+    border: 2px solid #ffcc00; /* Highlight effect */
+    background: #2a2a2a;
+    box-shadow: 0 0 5px rgba(255, 204, 0, 0.5);
+    color: white;
+}

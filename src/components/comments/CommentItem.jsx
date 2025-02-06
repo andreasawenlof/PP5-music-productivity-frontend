@@ -4,10 +4,13 @@ import { useState } from 'react';
 import { axiosRes } from '../../api/axiosDefaults';
 import { useAuth } from '../../contexts/AuthContext';
 import styles from './CommentItem.module.css';
+import btnStyles from '../../components/Button.module.css';
+import { Link } from 'react-router-dom';
 
 const CommentItem = ({ comment, setComments }) => {
     const { user } = useAuth();
-    const isOwner = user && user.username === comment.owner;
+
+    const isOwner = comment.owner === user.username;
 
     const [isEditing, setIsEditing] = useState(false);
     const [editContent, setEditContent] = useState(comment.content);
@@ -51,17 +54,24 @@ const CommentItem = ({ comment, setComments }) => {
 
     return (
         <div className={styles.commentItem}>
-            <img
-                src={comment.profile_image}
-                alt='avatar'
-                className={styles.avatar}
-            />
+            <Link to={`/profiles/${user.profile_id}`}>
+                <img
+                    src={comment.profile_image}
+                    alt='avatar'
+                    className={styles.avatar}
+                />
+            </Link>
             <div className={styles.commentContent}>
-                <strong>{comment.owner}</strong>
+                <Link
+                    className={styles.commentAuthor}
+                    to={`/profiles/${user.profile_id}`}
+                >
+                    <strong>{comment.owner}</strong>
+                </Link>
                 {isEditing ? (
                     <form
                         onSubmit={handleEdit}
-                        className={styles.editForm}
+                        className={btnStyles.edit}
                     >
                         <textarea
                             value={editContent}
@@ -70,7 +80,7 @@ const CommentItem = ({ comment, setComments }) => {
                         />
                         <button
                             type='submit'
-                            className={styles.saveButton}
+                            className={btnStyles.edit}
                         >
                             Save
                         </button>
@@ -90,16 +100,17 @@ const CommentItem = ({ comment, setComments }) => {
                         {!isEditing && (
                             <button
                                 onClick={() => setIsEditing(true)}
-                                className={styles.editButton}
+                                className={`${btnStyles.commentEdit}`}
                             >
-                                ✏️ Edit
+                                Edit
                             </button>
                         )}
+                        &nbsp;&nbsp;
                         <button
                             onClick={handleDelete}
-                            className={styles.deleteButton}
+                            className={btnStyles.commentDelete}
                         >
-                            🗑️ Delete
+                            Delete
                         </button>
                     </div>
                 )}

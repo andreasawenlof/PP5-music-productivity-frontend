@@ -8,9 +8,11 @@ import Container from 'react-bootstrap/Container';
 import Alert from 'react-bootstrap/Alert';
 import formStyles from '../../components/Forms.module.css';
 import btnStyles from '../../components/Button.module.css';
+import { useAuth } from '../../contexts/AuthContext';
 
 const CreateTrack = () => {
     const navigate = useNavigate();
+    const { user } = useAuth();
     const [albums, setAlbums] = useState([]);
     const [moods, setMoods] = useState([]);
     const [genres, setGenres] = useState([]);
@@ -19,6 +21,7 @@ const CreateTrack = () => {
     const [state, formAction] = useActionState(
         async (prev, formData) => {
             try {
+                formData.assigned_composer_username = user.username;
                 const response = await axiosReq.post('/api/tracks/', formData);
                 navigate(`/tracks/${response.data.id}`);
             } catch (err) {
@@ -83,6 +86,17 @@ const CreateTrack = () => {
                             </option>
                         ))}
                     </Form.Select>
+                </Form.Group>
+                <Form.Group controlId='assigned_composer_username'>
+                    <Form.Label>Assigned Composer</Form.Label>
+                    <Form.Control
+                        className={`text-white`}
+                        readOnly
+                        plaintext
+                        type='text'
+                        name='assigned_composer_username'
+                        defaultValue={user.username}
+                    />
                 </Form.Group>
                 <Form.Group controlId='mood'>
                     <Form.Label>Mood</Form.Label>
@@ -155,6 +169,14 @@ const CreateTrack = () => {
                         type='checkbox'
                         name='vocals_needed'
                         label='Vocals Needed'
+                    />
+                </Form.Group>
+                <Form.Group controlId='notes'>
+                    <Form.Label>Notes</Form.Label>
+                    <Form.Control
+                        className={`${formStyles.textAreaInput}`}
+                        type='textarea'
+                        name='notes'
                     />
                 </Form.Group>
 
