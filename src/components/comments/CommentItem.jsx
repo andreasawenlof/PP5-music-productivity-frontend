@@ -7,7 +7,8 @@ import styles from './CommentItem.module.css';
 import btnStyles from '../../components/Button.module.css';
 import { Link } from 'react-router-dom';
 
-const CommentItem = ({ comment, setComments }) => {
+const CommentItem = ({ comment, setComments, setEditingComment }) => {
+    // Added setEditingComment here
     const { user } = useAuth();
 
     const isOwner = comment.owner === user.username;
@@ -30,26 +31,8 @@ const CommentItem = ({ comment, setComments }) => {
     };
 
     /** ✅ Handle Edit */
-    const handleEdit = async (e) => {
-        e.preventDefault();
-        if (!editContent.trim()) return;
-        try {
-            const { data } = await axiosRes.patch(
-                `/api/comments/${comment.id}/`,
-                {
-                    content: editContent,
-                }
-            );
-            setComments((prev) =>
-                prev.map((c) =>
-                    c.id === comment.id ? { ...c, content: data.content } : c
-                )
-            );
-            setIsEditing(false);
-        } catch (err) {
-            console.error('❌ Error editing comment:', err);
-            setError('Failed to edit comment.');
-        }
+    const handleEditClick = () => {
+        setEditingComment(comment); // Set the comment to be edited in the parent
     };
 
     return (
@@ -66,7 +49,7 @@ const CommentItem = ({ comment, setComments }) => {
                     className={styles.commentAuthor}
                     to={`/profiles/${user.profile_id}`}
                 >
-                    <strong>{comment.owner}</strong>
+                    <strong>{comment.display_name}</strong>
                 </Link>
                 {isEditing ? (
                     <form
@@ -99,7 +82,7 @@ const CommentItem = ({ comment, setComments }) => {
                     <div className={styles.commentActions}>
                         {!isEditing && (
                             <button
-                                onClick={() => setIsEditing(true)}
+                                onClick={handleEditClick} // Trigger edit when clicked
                                 className={`${btnStyles.commentEdit}`}
                             >
                                 Edit
@@ -122,6 +105,7 @@ const CommentItem = ({ comment, setComments }) => {
 CommentItem.propTypes = {
     comment: commentPropType.isRequired,
     setComments: PropTypes.func.isRequired,
+    setEditingComment: PropTypes.func.isRequired, // Prop to set editing comment
 };
 
 export default CommentItem;

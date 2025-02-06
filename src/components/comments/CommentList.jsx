@@ -8,12 +8,14 @@ import PropTypes from 'prop-types';
 const CommentList = ({ trackId }) => {
     const [comments, setComments] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [editingComment, setEditingComment] = useState(null); // State for the comment being edited
 
+    // Fetching comments and ensuring the correct track data is available
     useEffect(() => {
         const fetchComments = async () => {
             try {
                 const { data } = await axiosReq.get(`/api/comments/`, {
-                    params: { track: trackId }, // ✅ Proper filtering
+                    params: { track: trackId }, // Fetching comments for the current track
                 });
                 setComments(data);
             } catch (err) {
@@ -31,6 +33,8 @@ const CommentList = ({ trackId }) => {
             <CommentForm
                 trackId={trackId}
                 setComments={setComments}
+                editingComment={editingComment} // Pass editingComment to CommentForm
+                setEditingComment={setEditingComment} // Pass setEditingComment to reset the state after edit
             />
             {loading ? (
                 <p>Loading comments...</p>
@@ -40,6 +44,7 @@ const CommentList = ({ trackId }) => {
                         key={comment.id}
                         comment={comment}
                         setComments={setComments}
+                        setEditingComment={setEditingComment} // Pass setEditingComment
                     />
                 ))
             ) : (
