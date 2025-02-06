@@ -1,0 +1,51 @@
+.profileContainer {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.profileAvatar {
+    width: 120px; /* ✅ Smaller size */
+    height: 120px;
+    border-radius: 50%; /* ✅ Round it up */
+    object-fit: cover; /* ✅ Crop & fit */
+    border: 3px solid #ffcc00; /* ✅ Nice accent */
+    margin-bottom: 20px;
+}
+
+.profileForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.profileForm input,
+.profileForm textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: #222;
+    color: white;
+}
+
+.profileForm button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.profileForm button:hover {
+    background-color: #0056b3;
+}

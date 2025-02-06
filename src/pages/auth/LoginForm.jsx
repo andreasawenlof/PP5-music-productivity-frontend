@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import useAuthRedirect from '../../hooks/useAuthRedirect'; // ✅ Import the custom hook
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Alert from 'react-bootstrap/Alert';
+import formStyles from '../../components/Forms.module.css';
+import btnStyles from '../../components/Button.module.css';
+import { Col, Container, Row } from 'react-bootstrap';
 
 function LoginForm() {
     const { login } = useAuth();
@@ -45,49 +48,142 @@ function LoginForm() {
     };
 
     return (
-        <Form onSubmit={handleSubmit}>
-            <h2 className='mb-3'>Login</h2>
-
-            {error && <Alert variant='danger'>{error}</Alert>}
-
-            <Form.Group
-                className='mb-3'
-                controlId='username'
+        <Row>
+            <Col
+                className='my-auto py-2 p-md-2'
+                md={6}
             >
-                <Form.Label>Username</Form.Label>
-                <Form.Control
-                    type='text'
-                    name='username'
-                    value={credentials.username}
-                    onChange={handleChange}
-                    placeholder='Enter username'
-                    required
-                />
-            </Form.Group>
+                <Container className='p-4'>
+                    <h2 className='mb-3'>Login</h2>
 
-            <Form.Group
-                className='mb-3'
-                controlId='password'
-            >
-                <Form.Label>Password</Form.Label>
-                <Form.Control
-                    type='password'
-                    name='password'
-                    value={credentials.password}
-                    onChange={handleChange}
-                    placeholder='Enter password'
-                    required
-                />
-            </Form.Group>
+                    <Form
+                        className={`${formStyles.formContainer}`}
+                        onSubmit={handleSubmit}
+                    >
+                        <Form.Group
+                            className='mb-3'
+                            controlId='username'
+                        >
+                            <Form.Label>Username</Form.Label>
+                            <Form.Control
+                                className={`${formStyles.formInput}`}
+                                type='text'
+                                name='username'
+                                value={credentials.username}
+                                onChange={handleChange}
+                                placeholder='Enter username'
+                                required
+                            />
+                        </Form.Group>
 
-            <Button
-                variant='primary'
-                type='submit'
-                disabled={loading}
-            >
-                {loading ? 'Logging in...' : 'Login'}
-            </Button>
-        </Form>
+                        <Form.Group
+                            className='mb-3'
+                            controlId='password'
+                        >
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control
+                                className={`${formStyles.formInput}`}
+                                type='password'
+                                name='password'
+                                value={credentials.password}
+                                onChange={handleChange}
+                                placeholder='Enter password'
+                                required
+                            />
+                        </Form.Group>
+
+                        <Button
+                            className={`${btnStyles.postButton}`}
+                            type='submit'
+                            disabled={loading}
+                        >
+                            {loading ? 'Logging in...' : 'Login'}
+                        </Button>
+                    </Form>
+                </Container>
+
+                <Container className={`mt-3`}>
+                    <Link
+                        className={`${btnStyles.primaryBtn} ${btnStyles.btn}`}
+                        to='/signup'
+                    >
+                        Don't have an account? <span>Sign up</span> to get one!
+                    </Link>
+                </Container>
+            </Col>
+            <Col
+                md={6}
+                className={`my-auto d-none d-md-block p-2`}
+            ></Col>
+        </Row>
+        // <Row>
+        //     <Col
+        //         className='my-auto py-2 p-md-2'
+        //         md={6}
+        //     >
+        //         <Container className='p-4'>
+        //             <h2 className='mb-3'>Login</h2>
+        //         <Form
+        //             className={`${formStyles.formContainer}`}
+        //             onSubmit={handleSubmit}
+        //         >
+
+        //             {error && <Alert variant='danger'>{error}</Alert>}
+
+        //             <Form.Group
+        //                 className='mb-3'
+        //                 controlId='username'
+        //             >
+        //                 <Form.Label>Username</Form.Label>
+        //                 <Form.Control
+        //                     className={`${formStyles.formInput}`}
+        //                     type='text'
+        //                     name='username'
+        //                     value={credentials.username}
+        //                     onChange={handleChange}
+        //                     placeholder='Enter username'
+        //                     required
+        //                 />
+        //             </Form.Group>
+
+        //             <Form.Group
+        //                 className='mb-3'
+        //                 controlId='password'
+        //             >
+        //                 <Form.Label>Password</Form.Label>
+        //                 <Form.Control
+        //                     className={`${formStyles.formInput}`}
+        //                     type='password'
+        //                     name='password'
+        //                     value={credentials.password}
+        //                     onChange={handleChange}
+        //                     placeholder='Enter password'
+        //                     required
+        //                 />
+        //             </Form.Group>
+
+        //             <Button
+        //                 className={`${btnStyles.postButton}`}
+        //                 type='submit'
+        //                 disabled={loading}
+        //             >
+        //                 {loading ? 'Logging in...' : 'Login'}
+        //             </Button>
+        //         </Form>
+        //         <Container className={`mt-3 text-center`}>
+        //             <Link
+        //                 className={`${btnStyles.primaryBtn} ${btnStyles.btn}`}
+        //                 to='/signup'
+        //             >
+        //                 Don't have an account? <span>Sign up</span>
+        //             </Link>
+        //         </Container>
+        //     </Container>
+        //     <Col
+        //         md={6}
+        //         className={`my-auto d-none d-md-block p-2`}
+        //     ></Col>
+        // </Row>
     );
 }
 

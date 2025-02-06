@@ -52,11 +52,19 @@ const TrackCard = ({ track, setTracks }) => {
                             {new Date(track.created_at).toLocaleDateString()}
                         </Card.Text>
                     </div>
+                    {
+                        (console.log('User:', user),
+                        console.log(
+                            'Track Assigned Composer:',
+                            track.assigned_composer
+                        ),
+                        console.log('Is Owner?', isOwner))
+                    }
                     {isOwner && (
                         <div className='d-flex flex-column'>
                             <Button
                                 size='sm'
-                                className={btnStyles.edit}
+                                className={btnStyles.postButton}
                                 onClick={(e) => {
                                     e.stopPropagation();
                                     navigate(`/tracks/${track.id}/edit`);

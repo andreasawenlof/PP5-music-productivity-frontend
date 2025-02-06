@@ -6,6 +6,7 @@ import SignupForm from './pages/auth/SignUpForm';
 import TrackDetails from './pages/tracks/TrackDetails';
 import CreateTrack from './pages/tracks/CreateTrack';
 import EditTrack from './pages/tracks/EditTrack';
+import ProfilePage from './pages/profiles/ProfilePage';
 
 function AppRoutes() {
     const { user } = useAuth(); // Get user state from AuthContext
@@ -39,6 +40,10 @@ function AppRoutes() {
             <Route
                 path='/signup'
                 element={<SignupForm />}
+            />
+            <Route
+                path='/profiles/:id'
+                element={<ProfilePage />}
             />
         </Routes>
     );

@@ -1,17 +1,9 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import formStyles from '../../components/Forms.module.css';
+import btnStyles from '../../components/Button.module.css';
 
-import styles from './SignInUpForm.module.css';
-
-import {
-    Form,
-    Button,
-    Image,
-    Col,
-    Row,
-    Container,
-    Alert,
-} from 'react-bootstrap';
+import { Form, Button, Col, Row, Container, Alert } from 'react-bootstrap';
 import axios from 'axios';
 
 const SignUpForm = () => {
@@ -44,19 +36,22 @@ const SignUpForm = () => {
     };
 
     return (
-        <Row className={styles.Row}>
+        <Row>
             <Col
                 className='my-auto py-2 p-md-2'
                 md={6}
             >
                 <Container className='p-4'>
-                    <h1 className={styles.Header}>sign up</h1>
+                    <h2 className='mb-3'>Signup</h2>
 
-                    <Form onSubmit={handleSubmit}>
+                    <Form
+                        className={`${formStyles.formContainer}`}
+                        onSubmit={handleSubmit}
+                    >
                         <Form.Group controlId='username'>
-                            <Form.Label className='d-none'>username</Form.Label>
+                            <Form.Label visuallyHidden>username</Form.Label>
                             <Form.Control
-                                className={styles.Input}
+                                className={`${formStyles.formInput} mb-3`}
                                 type='text'
                                 placeholder='Username'
                                 name='username'
@@ -74,9 +69,9 @@ const SignUpForm = () => {
                         ))}
 
                         <Form.Group controlId='password1'>
-                            <Form.Label className='d-none'>Password</Form.Label>
+                            <Form.Label visuallyHidden>Password</Form.Label>
                             <Form.Control
-                                className={styles.Input}
+                                className={`${formStyles.formInput} mb-3 `}
                                 type='password'
                                 placeholder='Password'
                                 name='password1'
@@ -98,7 +93,7 @@ const SignUpForm = () => {
                                 Confirm password
                             </Form.Label>
                             <Form.Control
-                                className={styles.Input}
+                                className={`${formStyles.formInput} mb-3`}
                                 type='password'
                                 placeholder='Confirm password'
                                 name='password2'
@@ -115,7 +110,12 @@ const SignUpForm = () => {
                             </Alert>
                         ))}
 
-                        <Button type='submit'>Sign up</Button>
+                        <Button
+                            className={`${btnStyles.postButton}`}
+                            type='submit'
+                        >
+                            Sign up
+                        </Button>
                         {errors.non_field_errors?.map((message, idx) => (
                             <Alert
                                 key={idx}
@@ -130,23 +130,17 @@ const SignUpForm = () => {
 
                 <Container className={`mt-3`}>
                     <Link
-                        className={styles.Link}
-                        to='/signin'
+                        className={`${btnStyles.primaryBtn} ${btnStyles.btn}`}
+                        to='/login'
                     >
-                        Already have an account? <span>Sign in</span>
+                        Already have an account? <span>Login</span>
                     </Link>
                 </Container>
             </Col>
             <Col
                 md={6}
-                className={`my-auto d-none d-md-block p-2 ${styles.SignUpCol}`}
-            >
-                <Image
-                    src={
-                        'https://codeinstitute.s3.amazonaws.com/AdvancedReact/hero2.jpg'
-                    }
-                />
-            </Col>
+                className={`my-auto d-none d-md-block p-2`}
+            ></Col>
         </Row>
     );
 };

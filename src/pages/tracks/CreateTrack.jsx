@@ -1,11 +1,13 @@
 import { useActionState, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { axiosReq } from '../../api/axiosDefaults';
-import styles from './CreateEditTrack.module.css'; // ✅ CSS Import
+import styles from './CreateEditTrack.module.css';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Alert from 'react-bootstrap/Alert';
+import formStyles from '../../components/Forms.module.css';
+import btnStyles from '../../components/Button.module.css';
 
 const CreateTrack = () => {
     const navigate = useNavigate();
@@ -52,10 +54,14 @@ const CreateTrack = () => {
         <Container className={styles.createTrackContainer}>
             <h2 className='text-center mb-4'>🎼 Create a New Track</h2>
             {state.error && <Alert variant='danger'>{state.error}</Alert>}
-            <Form action={formAction}>
+            <Form
+                className={`${formStyles.formContainer}`}
+                action={formAction}
+            >
                 <Form.Group controlId='title'>
                     <Form.Label>Track Title</Form.Label>
                     <Form.Control
+                        className={`${formStyles.formInput}`}
                         type='text'
                         name='title'
                         required
@@ -63,7 +69,10 @@ const CreateTrack = () => {
                 </Form.Group>
                 <Form.Group controlId='album'>
                     <Form.Label>Album Name</Form.Label>
-                    <Form.Select name='album'>
+                    <Form.Select
+                        className={`${formStyles.formInput}`}
+                        name='album'
+                    >
                         <option value=''>No Album</option> {/* Add this line */}
                         {albums.map((album) => (
                             <option
@@ -77,7 +86,10 @@ const CreateTrack = () => {
                 </Form.Group>
                 <Form.Group controlId='mood'>
                     <Form.Label>Mood</Form.Label>
-                    <Form.Select name='mood'>
+                    <Form.Select
+                        className={`${formStyles.formInput}`}
+                        name='mood'
+                    >
                         {moods.map((mood) => (
                             <option
                                 key={mood.id}
@@ -90,7 +102,10 @@ const CreateTrack = () => {
                 </Form.Group>
                 <Form.Group controlId='genre'>
                     <Form.Label>Genre</Form.Label>
-                    <Form.Select name='genre'>
+                    <Form.Select
+                        className={`${formStyles.formInput}`}
+                        name='genre'
+                    >
                         {genres.map((genre) => (
                             <option
                                 key={genre.id}
@@ -103,7 +118,10 @@ const CreateTrack = () => {
                 </Form.Group>
                 <Form.Group controlId='project_type'>
                     <Form.Label>Project Type</Form.Label>
-                    <Form.Select name='project_type'>
+                    <Form.Select
+                        className={`${formStyles.formInput}`}
+                        name='project_type'
+                    >
                         {projectTypes.map((projectType) => (
                             <option
                                 key={projectType.id}
@@ -117,7 +135,10 @@ const CreateTrack = () => {
 
                 <Form.Group controlId='status'>
                     <Form.Label>Status</Form.Label>
-                    <Form.Select name='status'>
+                    <Form.Select
+                        className={`${formStyles.formInput}`}
+                        name='status'
+                    >
                         <option value='not_started'>Not Started</option>
                         <option value='in_production'>In Production</option>
                         <option value='ready_for_mixing'>
@@ -138,9 +159,8 @@ const CreateTrack = () => {
                 </Form.Group>
 
                 <Button
-                    variant='primary'
                     type='submit'
-                    className='mt-3'
+                    className={`${btnStyles.postButton} mt-3`}
                 >
                     Create Track
                 </Button>

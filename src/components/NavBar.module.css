@@ -1,67 +1,101 @@
-/* 🔥 Sexy Dark Mode Navbar */
+/* 🔥 Navbar */
 .navbar {
-    background-color: #222;
-    padding: 10px 20px;
-    border-bottom: 2px solid #444;
+    background-color: var(--bg-secondary);
+    padding: 12px 20px;
+    border-bottom: 2px solid var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-/* 🎼 Brand Styling */
+/* 🎼 Brand */
 .brand {
-    color: #ffcc00 !important;
+    color: var(--accent) !important;
     font-size: 1.4rem;
     font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-/* 🚀 Nav Links */
+/* 🚀 Navigation Links */
 .navLink {
-    color: white;
+    color: var(--text-primary);
     margin-right: 15px;
     text-decoration: none;
-    transition: color 0.3s ease-in-out;
     font-size: 1rem;
 }
 
 .navLink:hover {
-    color: #ffcc00 !important;
+    color: var(--accent) !important;
 }
 
-/* 😎 Welcome Text */
-.welcome {
-    color: white;
-    font-weight: bold;
-    margin-right: 10px;
+/* 🏆 Avatar */
+.navAvatarContainer {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
-/* 🎵 Create Track Button */
-.createTrackBtn {
-    background-color: #ffcc00;
-    color: black;
-    font-weight: bold;
-    padding: 6px 12px;
-    border-radius: 6px;
-    text-decoration: none;
-    margin-left: 10px;
-    transition: background 0.3s ease-in-out;
+.navAvatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--accent);
+    transition: transform 0.2s ease-in-out;
 }
 
-.createTrackBtn:hover {
-    background-color: #ffdb4d;
+.navAvatar:hover {
+    transform: scale(1.1);
 }
 
-/* 🚪 Logout Button */
-.logoutBtn {
-    background-color: transparent;
-    color: white;
-    border: 1px solid white;
-    padding: 6px 12px;
-    border-radius: 6px;
-    font-size: 1rem;
-    cursor: pointer;
-    margin-left: 10px;
-    transition: all 0.3s ease-in-out;
+/* 🍔 Mobile Menu */
+.navbar-toggler {
+    border: none !important;
+    background: transparent !important;
 }
 
-.logoutBtn:hover {
-    background-color: #ff4444;
-    border-color: #ff4444;
+.navbar-toggler-icon {
+    filter: invert(100%);
+    width: 24px !important;
+    height: 24px !important;
+}
+
+.navbar-collapse {
+    background: var(--bg-secondary);
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* 🏆 Mobile Avatar */
+.mobileAvatar {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .navbar-collapse {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 12px;
+    }
+
+    .mobileAvatar {
+        display: block;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid var(--accent);
+        margin-bottom: 10px;
+    }
+
+    .navAvatarContainer {
+        display: none;
+    }
 }

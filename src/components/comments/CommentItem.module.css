@@ -1,0 +1,38 @@
+/* 🏆 Individual Comment */
+.commentItem {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border-bottom: 1px solid #444;
+}
+
+.commentItem:last-child {
+    border-bottom: none;
+}
+
+/* 🖼️ Profile Avatar */
+.avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%; /* Makes it round */
+    object-fit: cover;
+    margin-right: 12px;
+    border: 2px solid #ffcc00; /* Djurgården color accent */
+}
+
+/* 🗨️ Comment Content */
+.commentContent {
+    flex-grow: 1;
+    color: #ddd;
+}
+
+.commentAuthor {
+    font-weight: bold;
+    color: #fff;
+    font-size: 14px;
+}
+
+.commentText {
+    margin: 5px 0;
+    font-size: 14px;
+}

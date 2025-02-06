@@ -6,6 +6,8 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Alert from 'react-bootstrap/Alert';
+import formStyles from '../../components/forms.module.css';
+import btnStyles from '../../components/Button.module.css';
 
 const EditTrack = () => {
     const { id } = useParams(); // ✅ Get track ID from URL
@@ -72,24 +74,26 @@ const EditTrack = () => {
             <h2 className='text-center mb-4'>🎼 Edit Track</h2>
             {state.error && <Alert variant='danger'>{state.error}</Alert>}
 
-            <Form action={formAction}>
+            <Form
+                className={`${formStyles.formContainer}`}
+                action={formAction}
+            >
                 <Form.Group controlId='title'>
                     <Form.Label>Track Title</Form.Label>
                     <Form.Control
+                        className={`${formStyles.formInput}`}
                         type='text'
                         name='title'
-                        defaultValue={track.title}
                         required
                     />
                 </Form.Group>
-
                 <Form.Group controlId='album'>
                     <Form.Label>Album Name</Form.Label>
                     <Form.Select
+                        className={`${formStyles.formInput}`}
                         name='album'
-                        defaultValue={track.album || ''}
                     >
-                        <option value=''>No Album</option>
+                        <option value=''>No Album</option> {/* Add this line */}
                         {albums.map((album) => (
                             <option
                                 key={album.id}
@@ -100,12 +104,11 @@ const EditTrack = () => {
                         ))}
                     </Form.Select>
                 </Form.Group>
-
                 <Form.Group controlId='mood'>
                     <Form.Label>Mood</Form.Label>
                     <Form.Select
+                        className={`${formStyles.formInput}`}
                         name='mood'
-                        defaultValue={track.mood}
                     >
                         {moods.map((mood) => (
                             <option
@@ -117,12 +120,11 @@ const EditTrack = () => {
                         ))}
                     </Form.Select>
                 </Form.Group>
-
                 <Form.Group controlId='genre'>
                     <Form.Label>Genre</Form.Label>
                     <Form.Select
+                        className={`${formStyles.formInput}`}
                         name='genre'
-                        defaultValue={track.genre}
                     >
                         {genres.map((genre) => (
                             <option
@@ -134,12 +136,11 @@ const EditTrack = () => {
                         ))}
                     </Form.Select>
                 </Form.Group>
-
                 <Form.Group controlId='project_type'>
                     <Form.Label>Project Type</Form.Label>
                     <Form.Select
+                        className={`${formStyles.formInput}`}
                         name='project_type'
-                        defaultValue={track.project_type}
                     >
                         {projectTypes.map((projectType) => (
                             <option
@@ -155,8 +156,8 @@ const EditTrack = () => {
                 <Form.Group controlId='status'>
                     <Form.Label>Status</Form.Label>
                     <Form.Select
+                        className={`${formStyles.formInput}`}
                         name='status'
-                        defaultValue={track.status}
                     >
                         <option value='not_started'>Not Started</option>
                         <option value='in_production'>In Production</option>
@@ -174,16 +175,14 @@ const EditTrack = () => {
                         type='checkbox'
                         name='vocals_needed'
                         label='Vocals Needed'
-                        defaultChecked={track.vocals_needed}
                     />
                 </Form.Group>
 
                 <Button
-                    variant='warning'
                     type='submit'
-                    className='mt-3'
+                    className={`${btnStyles.postButton} mt-3`}
                 >
-                    Update Track
+                    Edit Track
                 </Button>
             </Form>
         </Container>

@@ -5,13 +5,17 @@ import { useAuth } from '../../contexts/AuthContext';
 import styles from './TrackDetails.module.css';
 import btnStyles from '../../components/Button.module.css';
 import useDeleteTrack from '../../hooks/useDeleteTrack'; // ✅ Import delete hook
+import CommentList from '../../components/comments/CommentList';
 
 const TrackDetails = () => {
     const { id } = useParams();
     const [track, setTrack] = useState(null);
     const navigate = useNavigate();
     const { user } = useAuth();
-    const handleDelete = useDeleteTrack(); // ✅ Use delete hook
+
+    const handleDelete = useDeleteTrack(() => {
+        navigate('/tracks'); // ✅ Redirect immediately after deletion
+    });
 
     useEffect(() => {
         const fetchTrack = async () => {
@@ -20,10 +24,11 @@ const TrackDetails = () => {
                 setTrack(data);
             } catch (err) {
                 console.error('Error fetching track:', err);
+                navigate('/tracks'); // ✅ Redirect if track doesn't exist
             }
         };
         fetchTrack();
-    }, [id]);
+    }, [id, navigate]);
 
     if (!track) return <p>Loading...</p>;
 
@@ -47,7 +52,7 @@ const TrackDetails = () => {
                     {track.status_display || track.status}
                 </span>
             </p>
-
+            <CommentList trackId={track.id} />
             {isOwner && (
                 <div className={styles.buttonsContainer}>
                     <button
@@ -58,7 +63,7 @@ const TrackDetails = () => {
                     </button>
                     <button
                         className={btnStyles.delete}
-                        onClick={() => handleDelete(track.id)} // ✅ Pass the track.id
+                        onClick={() => handleDelete(track.id)} // ✅ Delete and redirect
                     >
                         Delete
                     </button>

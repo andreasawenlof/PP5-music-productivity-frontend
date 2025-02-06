@@ -42,6 +42,7 @@ export const AuthProvider = ({ children }) => {
             Cookies.set('my-refresh-token', res.data.refresh, { expires: 7 });
 
             setUser(res.data.user);
+
             localStorage.setItem('user', JSON.stringify(res.data.user));
         } catch (err) {
             console.error('❌ Login failed:', err);
