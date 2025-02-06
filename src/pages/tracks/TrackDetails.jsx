@@ -32,7 +32,7 @@ const TrackDetails = () => {
 
     if (!track) return <p>Loading...</p>;
 
-    const isOwner = user && user.pk === track.assigned_composer;
+    const isOwner = track.owner === user.username;
 
     return (
         <div className={styles.trackDetailsContainer}>
@@ -52,21 +52,27 @@ const TrackDetails = () => {
                     {track.status_display || track.status}
                 </span>
             </p>
-            <CommentList trackId={track.id} />
             {isOwner && (
                 <div className={styles.buttonsContainer}>
-                    <button
-                        className={btnStyles.edit}
-                        onClick={() => navigate(`/tracks/${track.id}/edit`)}
-                    >
-                        Edit
-                    </button>
-                    <button
-                        className={btnStyles.delete}
-                        onClick={() => handleDelete(track.id)} // ✅ Delete and redirect
-                    >
-                        Delete
-                    </button>
+                    <span>
+                        <button
+                            className={btnStyles.editTwo}
+                            onClick={() => navigate(`/tracks/${track.id}/edit`)}
+                        >
+                            Edit
+                        </button>
+                    </span>
+                    &nbsp;&nbsp;
+                    <span>
+                        <button
+                            className={btnStyles.delete}
+                            size='sm'
+                            onClick={() => handleDelete(track.id)} // ✅ Delete and redirect
+                        >
+                            Delete
+                        </button>
+                    </span>
+                    <CommentList trackId={track.id} />
                 </div>
             )}
         </div>

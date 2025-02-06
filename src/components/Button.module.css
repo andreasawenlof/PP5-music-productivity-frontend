@@ -121,6 +121,28 @@
     margin-top: 15px;
 }
 
+.editTwo {
+    background-color: #ffcc00;
+    color: black;
+    padding: 10px 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    width: 120px;
+    margin-top: 10px;
+    box-shadow: 0 3px 5px rgba(255, 204, 0, 0.3);
+}
+
+.editTwo:hover {
+    background-color: #ffdb4d;
+    transform: scale(1.05);
+    box-shadow: 0 5px 10px rgba(255, 204, 0, 0.5);
+}
+
 /* ✏️ EDIT BUTTON - Using Create Track Button Styling */
 .edit {
     background-color: #ffcc00;
