@@ -52,14 +52,7 @@ const TrackCard = ({ track, setTracks }) => {
                             {new Date(track.created_at).toLocaleDateString()}
                         </Card.Text>
                     </div>
-                    {
-                        (console.log('User:', user),
-                        console.log(
-                            'Track Assigned Composer:',
-                            track.assigned_composer
-                        ),
-                        console.log('Is Owner?', isOwner))
-                    }
+                    {}
                     {isOwner && (
                         <div className='d-flex flex-column'>
                             <Button

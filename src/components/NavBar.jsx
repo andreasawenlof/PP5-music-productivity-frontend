@@ -33,15 +33,15 @@ const NavBar = () => {
                         />
                     )}
                     <Nav className='ms-auto'>
-                        <NavLink
-                            className={`${btnStyles.tracksBtn} ${btnStyles.btn}`}
-                            to='/tracks'
-                        >
-                            Tracks
-                        </NavLink>
-
                         {user ? (
                             <>
+                                <NavLink
+                                    className={`${btnStyles.tracksBtn} ${btnStyles.btn}`}
+                                    to='/tracks'
+                                >
+                                    Tracks
+                                </NavLink>
+
                                 <NavLink
                                     className={`${btnStyles.createTrackBtn} ${btnStyles.btn}`}
                                     to='/tracks/create'
