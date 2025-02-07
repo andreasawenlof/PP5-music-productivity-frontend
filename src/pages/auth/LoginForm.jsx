@@ -38,10 +38,13 @@ function LoginForm() {
         setError(null);
 
         try {
-            await login(credentials);
+            await login(credentials.username, credentials.password);
             navigate('/'); // Redirect to homepage after login
         } catch (err) {
-            setError('Invalid username or password');
+            console.error('Login error:', err);
+            setError(
+                err.response?.data?.detail || 'Invalid username or password'
+            );
         } finally {
             setLoading(false);
         }

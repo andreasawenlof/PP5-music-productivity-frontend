@@ -28,7 +28,6 @@ const CommentForm = ({
         console.log('Submitting update:', {
             content,
             track: trackId || editingComment.track,
-            album: editingComment.album,
         });
 
         try {
