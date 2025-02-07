@@ -53,7 +53,7 @@ const CommentItem = ({ comment, setComments, setEditingComment }) => {
                 </Link>
                 {isEditing ? (
                     <form
-                        onSubmit={handleEdit}
+                        onSubmit={handleEditClick}
                         className={btnStyles.edit}
                     >
                         <textarea

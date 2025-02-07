@@ -11,6 +11,8 @@ const TrackCard = ({ track, setTracks }) => {
     const { user } = useAuth();
     const navigate = useNavigate();
     const isOwner = track.owner === user.username;
+    const isComposer = user?.is_composer;
+    const isReviewer = user?.is_reviewer;
 
     const handleDelete = useDeleteTrack(setTracks); // ✅ Using the hook
 
@@ -24,7 +26,7 @@ const TrackCard = ({ track, setTracks }) => {
                     <div>
                         <Card.Title>{track.title}</Card.Title>
                         <Card.Text>{track?.album_name || 'No Album'}</Card.Text>
-                        <Card.Subtitle className='mb-2 text-muted'>
+                        <Card.Subtitle className='mb-2'>
                             {track?.genre_name || 'No Genre'} |{' '}
                             {track?.mood_name || 'No Mood'}
                         </Card.Subtitle>
@@ -42,18 +44,18 @@ const TrackCard = ({ track, setTracks }) => {
                             <strong>Project Type:</strong>{' '}
                             {track?.project_type_name || 'No Project Type'}
                         </Card.Text>
-                        <Card.Subtitle className='mb-2 text-muted'>
-                            Instruments:{' '}
+                        <Card.Subtitle className='mb-2 mt-2'>
+                            (
                             {track?.instrument_names?.join(', ') ||
                                 'No Instruments yet'}
+                            )
                         </Card.Subtitle>
                         <Card.Text>
                             🗓️ <strong>Added:</strong>{' '}
                             {new Date(track.created_at).toLocaleDateString()}
                         </Card.Text>
                     </div>
-                    {}
-                    {isOwner && (
+                    {isComposer && (
                         <div className='d-flex flex-column'>
                             <Button
                                 size='sm'

@@ -198,7 +198,7 @@ const EditTrack = () => {
                     type='submit'
                     className={`${btnStyles.postButton} mt-3`}
                 >
-                    Edit Track
+                    Update Track
                 </Button>
             </Form>
         </Container>

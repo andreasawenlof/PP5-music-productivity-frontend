@@ -9,6 +9,8 @@ import Alert from 'react-bootstrap/Alert';
 import formStyles from '../../components/Forms.module.css';
 import btnStyles from '../../components/Button.module.css';
 import { useAuth } from '../../contexts/AuthContext';
+import Select from 'react-select';
+import selectStyles from '../../components/DarkThemeSelect.module.css';
 
 const CreateTrack = () => {
     const navigate = useNavigate();
@@ -17,6 +19,9 @@ const CreateTrack = () => {
     const [moods, setMoods] = useState([]);
     const [genres, setGenres] = useState([]);
     const [projectTypes, setProjectTypes] = useState([]);
+    const [instruments, setInstruments] = useState([]);
+
+    const assignedComposer = user?.username || '';
 
     const [state, formAction] = useActionState(
         async (prev, formData) => {
@@ -37,6 +42,9 @@ const CreateTrack = () => {
                 const albumResponse = await axiosReq.get('/api/albums/');
                 const moodResponse = await axiosReq.get('/api/moods/');
                 const genreResponse = await axiosReq.get('/api/genres/');
+                const instrumentResponse = await axiosReq.get(
+                    '/api/instruments/'
+                );
                 const projectTypeResponse = await axiosReq.get(
                     '/api/project-types/'
                 );
@@ -45,6 +53,7 @@ const CreateTrack = () => {
                 setMoods(moodResponse.data);
                 setGenres(genreResponse.data);
                 setProjectTypes(projectTypeResponse.data);
+                setInstruments(instrumentResponse.data);
             } catch (err) {
                 console.error('Failed to fetch data:', err);
             }
@@ -52,6 +61,14 @@ const CreateTrack = () => {
 
         fetchData();
     }, []);
+
+    useEffect(() => {
+        if (user === null) {
+            navigate('/login', { state: { from: '/tracks/create' } });
+        }
+    }, [user, navigate]);
+
+    if (user === undefined) return null; // Prevent rendering until user loads
 
     return (
         <Container className={styles.createTrackContainer}>
@@ -87,15 +104,15 @@ const CreateTrack = () => {
                         ))}
                     </Form.Select>
                 </Form.Group>
-                <Form.Group controlId='assigned_composer_username'>
+                <Form.Group controlId='assignedComposer'>
                     <Form.Label>Assigned Composer</Form.Label>
                     <Form.Control
                         className={`text-white`}
                         readOnly
                         plaintext
                         type='text'
-                        name='assigned_composer_username'
-                        defaultValue={user.username}
+                        name='assignedComposer'
+                        defaultValue={assignedComposer}
                     />
                 </Form.Group>
                 <Form.Group controlId='mood'>
@@ -145,6 +162,18 @@ const CreateTrack = () => {
                             </option>
                         ))}
                     </Form.Select>
+                </Form.Group>
+                <Form.Group controlId='instruments'>
+                    <Form.Label>Instruments</Form.Label>
+                    {instruments.map((instrument) => (
+                        <Form.Check
+                            key={instrument.id}
+                            type='checkbox'
+                            label={instrument.name}
+                            name='instruments'
+                            value={instrument.id}
+                        />
+                    ))}
                 </Form.Group>
 
                 <Form.Group controlId='status'>

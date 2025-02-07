@@ -5,10 +5,9 @@ import { useNavigate, useLocation } from 'react-router-dom';
 /**
  * Custom hook to handle authentication-based redirects.
  * - Redirects users **away** from login if already logged in.
- * - Prevents flickering of login form.
- * - Returns `isLoading` so components can delay rendering.
+ * - Redirects **back to the last attempted page** after login.
  */
-const useAuthRedirect = (protectedPath = null) => {
+const useAuthRedirect = () => {
     const { user } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
@@ -16,21 +15,22 @@ const useAuthRedirect = (protectedPath = null) => {
 
     useEffect(() => {
         if (user) {
+            // ✅ If user is logged in & came from a protected page → Redirect back
+            const from = location.state?.from || '/';
             if (location.pathname === '/login') {
-                console.log('🔄 User is logged in, redirecting to home...');
-                navigate('/'); // Redirect logged-in users away from login page
+                navigate(from, { replace: true });
             }
             setIsLoading(false);
         } else {
-            if (protectedPath) {
-                console.log('🚫 No user found, redirecting to login...');
-                navigate('/login'); // Redirect unauthorized users to login
+            // ✅ If NOT logged in & accessing a protected page → Redirect to login & save page
+            if (location.pathname !== '/login') {
+                navigate('/login', { state: { from: location.pathname } });
             }
             setIsLoading(false);
         }
-    }, [user, navigate, location, protectedPath]);
+    }, [user, navigate, location]);
 
-    return isLoading; // Components can use this to delay rendering
+    return isLoading; // ✅ Components can delay rendering until check completes
 };
 
 export default useAuthRedirect;

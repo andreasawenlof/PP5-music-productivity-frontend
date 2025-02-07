@@ -39,7 +39,8 @@ function LoginForm() {
 
         try {
             await login(credentials.username, credentials.password);
-            navigate('/'); // Redirect to homepage after login
+            const redirectTo = location.state?.from || '/tracks'; // ✅ Redirect to last visited page
+            navigate(redirectTo, { replace: true });
         } catch (err) {
             console.error('Login error:', err);
             setError(

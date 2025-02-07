@@ -32,7 +32,8 @@ const TrackDetails = () => {
 
     if (!track) return <p>Loading...</p>;
 
-    const isOwner = track.owner === user.username;
+    const isComposer = user?.is_composer;
+    const isReviewer = user?.is_reviewer;
 
     return (
         <div className={styles.trackDetailsContainer}>
@@ -52,7 +53,7 @@ const TrackDetails = () => {
                     {track.status_display || track.status}
                 </span>
             </p>
-            {isOwner && (
+            {isComposer && (
                 <div className={styles.buttonsContainer}>
                     <span>
                         <button
@@ -72,9 +73,9 @@ const TrackDetails = () => {
                             Delete
                         </button>
                     </span>
-                    <CommentList trackId={track.id} />
                 </div>
             )}
+            <CommentList trackId={track.id} />
         </div>
     );
 };

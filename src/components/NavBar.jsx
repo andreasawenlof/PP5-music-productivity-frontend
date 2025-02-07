@@ -8,6 +8,9 @@ import btnStyles from './Button.module.css';
 
 const NavBar = () => {
     const { user, logout } = useAuth();
+    console.log('User object:', user);
+    const isComposer = user?.is_composer;
+    const isReviewer = user?.is_reviewer;
 
     return (
         <Navbar
@@ -18,7 +21,7 @@ const NavBar = () => {
             <Container>
                 <Navbar.Brand
                     as={NavLink}
-                    to='/'
+                    to={user ? '/tracks' : '/login'}
                     className={styles.brand}
                 >
                     🎼 MP App
@@ -39,15 +42,17 @@ const NavBar = () => {
                                     className={`${btnStyles.tracksBtn} ${btnStyles.btn}`}
                                     to='/tracks'
                                 >
-                                    Tracks
+                                    {isReviewer ? 'Pending Tracks' : 'Tracks'}
                                 </NavLink>
 
-                                <NavLink
-                                    className={`${btnStyles.createTrackBtn} ${btnStyles.btn}`}
-                                    to='/tracks/create'
-                                >
-                                    + Create
-                                </NavLink>
+                                {isComposer && (
+                                    <NavLink
+                                        className={`${btnStyles.createTrackBtn} ${btnStyles.btn}`}
+                                        to='/tracks/create'
+                                    >
+                                        + Create
+                                    </NavLink>
+                                )}
                                 <div
                                     className={`${styles.navAvatarContainer} ${styles.navAvatar}`}
                                 >

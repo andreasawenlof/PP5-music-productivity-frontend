@@ -8,7 +8,6 @@ const useDeleteTrack = (setTracks) => {
         if (window.confirm('Are you sure you want to delete this track?')) {
             try {
                 await axiosRes.delete(`/api/tracks/${trackId}/`);
-                alert('✅ Track deleted successfully!');
 
                 // ✅ Update UI instantly by removing track from state
                 setTracks((prevTracks) =>
