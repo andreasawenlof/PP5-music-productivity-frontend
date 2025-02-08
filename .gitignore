@@ -12,9 +12,11 @@ dist
 dist-ssr
 *.local
 .env
-README.md
-README2.md
-README3.md
+README1
+README2
+README3
+README4
+README5
 
 # Editor directories and files
 .vscode/*

@@ -1,105 +1,187 @@
-🎵 **Introduction**
+# 🎵 Music Productivity App
 
-The **Music Productivity App** is designed for composers, producers, and music industry professionals to streamline their workflow. It’s more than just a tracking tool—it’s a **collaborative hub** where teams can efficiently manage their projects, track progress, and maintain clear communication with supervisors, reviewers, and publishers.
+## 📌 Introduction
 
-This app eliminates tedious admin work so composers can focus on creativity, making it easier to organize tracks, assign roles, and keep everything structured within one intuitive system.
+The **Music Productivity App** is designed for **composers, producers, and music professionals** to streamline their workflow. It eliminates tedious admin work, allowing users to efficiently **track, manage, and collaborate** on their compositions in a structured system.
 
 ---
 
-## ✨ **Features & User Roles**
+## 📋 Table of Contents
+
+-   [Features & User Roles](#features--user-roles)
+-   [Filtering & Searching](#filtering--searching)
+-   [Comments & Reviews](#comments--reviews)
+-   [Future Features](#future-features)
+-   [Setup & Deployment](#setup--deployment)
+-   [Testing](#testing)
+-   [User Stories](#user-stories)
+-   [Technologies Used](#technologies-used)
+-   [Credits](#credits)
+
+---
+
+## ✨ Features & User Roles
 
 ### 👨‍🎤 **Composers (Full Access)**
 
--   Create, edit, and delete tracks.
--   Assign moods, genres, instruments, project type, and track status.
--   Mark tracks as **Ready for Review** when completed.
--   Manage comments—a conversation thread per track for easy collaboration.
--   Assign themselves to tracks so teammates can see who’s working on what.
--   **Future Features:** Manage albums, upload audio files, advanced search filters.
+✔ Create, edit, and delete tracks.  
+✔ Assign **moods, genres, instruments, project type, and track status**.  
+✔ Mark tracks as **Ready for Review**.  
+✔ Manage comments for **team collaboration**.  
+✔ Assign themselves to tracks so others can see who's working on what.  
+✔ _(Future Feature)_ Manage albums, upload audio files, and enhance search filters.
 
 ### 🎼 **Reviewers (Limited Access)**
 
--   Only see tracks marked as **Ready for Review**.
--   Listen to tracks (**Future Feature**) and provide structured feedback.
--   Cannot create or edit tracks—only review & communicate.
--   Set **Review Status** to "Needs Revision" if changes are required.
--   Engage in a **separate review thread** (not the composer comments) for structured feedback.
--   **Review History:** Keep track of past feedback & revisions.
--   **Composers reply as a team** (no individual names shown) to promote unity.
--   **Revision Counter:** Composers track how many times a piece has been revised (private to composers).
--   Mark a track as **"Completed and Revised"** when approved.
+✔ View **only** tracks marked as **Ready for Review**.  
+✔ ✔ _(Future Feature)_ Provide **structured feedback** in a dedicated review thread.  
+✔ Cannot create or edit tracks—**only review & comment**(✔ _(Future Feature)_).  
+✔ _(Future Feature)_ Set Review Status to "Needs Revision".  
+✔ _(Future Feature)_ Track review history & revision counts.  
+✔ _(Future Feature)_ Mark tracks as **Completed & Approved**.
 
 ---
 
-## 🔍 **Filtering & Searching**
+## 🔍 Filtering & Searching
 
-To make navigating hundreds of tracks easier, the app includes powerful filtering options:
+**Powerful filtering options:**
+✔ Search by **title**.  
+✔ Filter by:
 
--   Search by **title**
--   Filter by:
-    -   **Genre**
-    -   **Mood**
-    -   **Status** (Not Started, In Production, Ready for Mixing, Ready for Review)
-    -   **Project Type**
-    -   **Vocals Needed** (Yes/No)
+-   **Genre**
+-   **Mood**
+-   **Status** (_Not Started, In Progress, Ready for Review, etc._)
+-   **Project Type**
+-   **Vocals Needed (Yes/No)**
 
-✅ **Future Feature:** More advanced filtering & search functionalities.
-
----
-
-## 🔥 **Comments & Reviews**
-
-### 🎤 **Comments (For Composers Only)**
-
--   Each track has its own **dedicated comment thread**.
--   Used for **team communication & quick collaboration**.
--   Owners can **edit & delete** their own comments.
--   **Avatar links to composer profiles** (**Future Feature**).
-
-### 📝 **Review Feedback (For Reviewers & Composers)**
-
--   **Separate from composer comments** (structured feedback system).
--   Reviewer can set track status to **"Needs Revision"**.
--   Composers respond **as a team** (no individual names displayed).
--   **Review history log** keeps track of all revisions.
--   **Revision counter** (composers only) to track how many times a track was revised.
--   Reviewer marks track as **"Completed and Revised"** when done.
+_(Future Feature)_ Advanced filtering & search options.
 
 ---
 
-## 🚀 **Future Features**
+## 📝 Comments & Reviews
 
--   💿 **Albums** – Tracks can belong to albums, allowing bulk updates & separate album comments.
--   🎧 **Audio File Uploads** – Composers can attach sound files for easy reference.
--   🔎 **Enhanced Search & Filters** – More precise ways to find tracks & comments.
--   🎼 **Instrument Management** – Create & categorize instruments within the system.
--   📈 **Dashboard & Analytics** – Insights into track progress & team activity.
+### 🎤 **Composer Comments**
 
-🔥 This keeps everything transparent, structured, and easy to navigate. **Composers don’t waste time searching for feedback, and reviewers get a clear overview of tracks that need attention.** The goal? **More music, less admin.** 🎶
+✔ Track-specific **team collaboration threads**.  
+✔ Owners can **edit & delete** their own comments.  
+✔ Link avatars and names to **composer profiles**.
 
----
+### 📝 **Review Feedback**
 
-## 📸 **Screenshots** (Placeholders for visuals)
-
--   **Homepage**: `![Homepage](assets/homepage.png)`
--   **Track Detail View**: `![Track Detail](assets/track-detail.png)`
--   **Comment Section**: `![Comments](assets/comments.png)`
--   **Review System**: `![Reviews](assets/review-system.png)`
--   **Filtering & Search**: `![Filters](assets/filters.png)`
+✔ _(Future Feature)_ Separate from composer comments (**structured review system**).  
+✔ _(Future Feature)_ Reviewers set track status to **"Needs Revision"** if necessary.  
+✔ _(Future Feature)_ Review log with **revision history**.  
+✔ _(Future Feature)_ Revision counter for **internal tracking**.
 
 ---
 
-## 🔬 **Testing**
+## 🚀 Future Features
 
--   **Manual testing** results can be found in [`TESTING.md`](./TESTING.md).
--   **User Stories** documented in [`USER_STORIES.md`](./USER_STORIES.md).
+💿 **Albums** – Tracks can belong to albums for better organization and bulk update tracks.  
+🎧 **Audio Uploads** – Attach sound files for easy review.  
+🔎 **Enhanced Search** – More filtering & categorization options.  
+🎼 **Instrument Management** – Create & categorize instruments.  
+🎼 **Genre/Mood/Project Type** – Create & Edit these features.  
+📊 **Dashboard & Analytics** – Insights into track progress & team activity.
+
+📊 **Review System** – Reviewers can give feedback, change status on track have a back and forth with the composers.
+
+---
+
+## 🛠 Setup & Deployment
+
+### **1️⃣ Backend (Django REST Framework)**
+
+```bash
+# Clone the backend repository:
+git clone <backend_repo_url>
+cd backend
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py runserver
+```
+
+### **2️⃣ Frontend (React 19)**
+
+```bash
+# Clone the frontend repository:
+git clone <frontend_repo_url>
+cd frontend
+npm install
+npm start
+```
+
+### **3️⃣ Deployment** _(Optional: To be expanded if deployed on Heroku or Vercel)_
+
+-   Frontend hosted on **[Vercel/Netlify](#)**
+-   Backend hosted on **[Heroku](#)**
 
 ---
 
-## ⚠️ **License**
+## ✅ Testing
 
-**Note:** This project is **submitted for educational purposes only** and is **not open-source**. No external use, copying, or distribution is allowed beyond the scope of this assessment.
+A full breakdown of testing procedures is available in [`TESTING.md`](#).
 
-For inquiries regarding usage or collaboration, please contact the project owner.
+### **Key Tests**
+
+✔ **CRUD Operations** – Create, edit, delete tracks, comments, and reviews.  
+✔ **Filtering & Searching** – Ensure smooth user navigation.  
+✔ **User Role Access Control** – Reviewers cannot modify tracks.  
+✔ **Authentication & Authorization** – Secure login/logout & user permissions.  
+✔ **Responsiveness** – Cross-browser and mobile compatibility.
 
 ---
+
+## 📌 User Stories
+
+_(Full breakdown in [`USER_STORIES.md`](#))_  
+✔ As a **composer**, I want to **add & edit tracks** so I can manage my workflow.  
+✔ As a **reviewer**, I want to **provide feedback** so I can ensure quality.  
+✔ As a **user**, I want to **filter and search** so I can quickly find what I need.
+
+---
+
+## 🖥 Technologies Used
+
+✔ **Frontend:** React 19, React Bootstrap, CSS Modules  
+✔ **Backend:** Django 4.2, Django REST Framework 3.15  
+✔ **Authentication:** JWT, dj-rest-auth  
+✔ **Deployment:** _(To be documented)_  
+✔ **Database:** PostgreSQL  
+✔ **Hosting:** _(Optional: Vercel, Heroku, Netlify, etc.)_
+
+---
+
+## 🙌 Credits
+
+This project was developed as part of a **portfolio submission** for Code Institute.
+
+Big thanks to:
+
+-   **OpenAI & Online Resources** – For debugging & research.
+-   **Developers & Peers** – For feedback & best practices.
+
+### Special thanks to:
+
+-   To my amazing parents and their idescribable support
+-   To my really good mate Pontus Ericson who always checks up on me and always have time to help me and assist me no matter what.
+-   Last but not least: Babe (You know who you are).
+
+---
+
+## 🎯 Summary
+
+This app **streamlines music production workflows**, reduces admin tasks, and **keeps teams in sync**—all within one structured system. More music, less hassle. 🎶
+
+---
+
+## 📜 License
+
+> **Note**: This project is submitted for educational purposes only and is not open-source. No external use, copying, or distribution is allowed beyond the scope of this assessment.
+>
+> For inquiries regarding usage or collaboration, please contact the project owner.
+
+🚀 **Next Steps**:
+1️⃣ Add **screenshots & images** where placeholders are.  
+2️⃣ Finalize **deployment details** (if applicable).  
+3️⃣ Review & submit! 🎯
