@@ -6,7 +6,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Alert from 'react-bootstrap/Alert';
-import formStyles from '../../components/forms.module.css';
+import formStyles from '../../components/Forms.module.css';
 import btnStyles from '../../components/Button.module.css';
 import { useAuth } from '../../contexts/AuthContext';
 
