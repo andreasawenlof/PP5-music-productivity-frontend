@@ -4,6 +4,8 @@
 
 The **Music Productivity App** is designed for **composers, producers, and music professionals** to streamline their workflow. It eliminates tedious admin work, allowing users to efficiently **track, manage, and collaborate** on their compositions in a structured system.
 
+![Am I Responsive Screenshot](src/assets/docs/responsive.png)
+
 ---
 
 ## 📋 Table of Contents
@@ -31,14 +33,16 @@ The **Music Productivity App** is designed for **composers, producers, and music
 ✔ Assign themselves to tracks so others can see who's working on what.  
 ✔ _(Future Feature)_ Manage albums, upload audio files, and enhance search filters.
 
-### 🎼 **Reviewers (Limited Access)**
+### 🎠 **Reviewers (Limited Access)**
 
 ✔ View **only** tracks marked as **Ready for Review**.  
-✔ ✔ _(Future Feature)_ Provide **structured feedback** in a dedicated review thread.  
-✔ Cannot create or edit tracks—**only review & comment**(✔ _(Future Feature)_).  
+✔ _(Future Feature)_ Provide **structured feedback** in a dedicated review thread.  
+✔ Cannot create or edit tracks—**only review & comment**.  
 ✔ _(Future Feature)_ Set Review Status to "Needs Revision".  
 ✔ _(Future Feature)_ Track review history & revision counts.  
 ✔ _(Future Feature)_ Mark tracks as **Completed & Approved**.
+
+![User Roles](documents/user_roles.png)
 
 ---
 
@@ -55,6 +59,8 @@ The **Music Productivity App** is designed for **composers, producers, and music
 -   **Vocals Needed (Yes/No)**
 
 _(Future Feature)_ Advanced filtering & search options.
+
+![Filtering & Searching](documents/filters.png)
 
 ---
 
@@ -73,15 +79,17 @@ _(Future Feature)_ Advanced filtering & search options.
 ✔ _(Future Feature)_ Review log with **revision history**.  
 ✔ _(Future Feature)_ Revision counter for **internal tracking**.
 
+![Comments & Reviews](documents/comments.png)
+
 ---
 
 ## 🚀 Future Features
 
-💿 **Albums** – Tracks can belong to albums for better organization and bulk update tracks.  
+🎿 **Albums** – Tracks can belong to albums for better organization and bulk update tracks.  
 🎧 **Audio Uploads** – Attach sound files for easy review.  
-🔎 **Enhanced Search** – More filtering & categorization options.  
-🎼 **Instrument Management** – Create & categorize instruments.  
-🎼 **Genre/Mood/Project Type** – Create & Edit these features.  
+🔍 **Enhanced Search** – More filtering & categorization options.  
+🎠 **Instrument Management** – Create & categorize instruments.  
+🎠 **Genre/Mood/Project Type** – Create & Edit these features.  
 📊 **Dashboard & Analytics** – Insights into track progress & team activity.
 
 📊 **Review System** – Reviewers can give feedback, change status on track have a back and forth with the composers.
@@ -113,8 +121,8 @@ npm start
 
 ### **3️⃣ Deployment** _(Optional: To be expanded if deployed on Heroku or Vercel)_
 
--   Frontend hosted on **[Vercel/Netlify](#)**
--   Backend hosted on **[Heroku](#)**
+-   Frontend hosted on **[Vercel/Netlify](documents/deployment.png)**
+-   Backend hosted on **[Heroku](documents/deployment.png)**
 
 ---
 
@@ -129,6 +137,8 @@ A full breakdown of testing procedures is available in [`TESTING.md`](#).
 ✔ **User Role Access Control** – Reviewers cannot modify tracks.  
 ✔ **Authentication & Authorization** – Secure login/logout & user permissions.  
 ✔ **Responsiveness** – Cross-browser and mobile compatibility.
+
+![Testing](documents/testing.png)
 
 ---
 
@@ -163,8 +173,8 @@ Big thanks to:
 
 ### Special thanks to:
 
--   To my amazing parents and their idescribable support
--   To my really good mate Pontus Ericson who always checks up on me and always have time to help me and assist me no matter what.
+-   To my amazing parents and their indescribable support
+-   To my really good mate Pontus Ericson who always checks up on me and always has time to help me no matter what.
 -   Last but not least: Babe (You know who you are).
 
 ---
@@ -172,6 +182,8 @@ Big thanks to:
 ## 🎯 Summary
 
 This app **streamlines music production workflows**, reduces admin tasks, and **keeps teams in sync**—all within one structured system. More music, less hassle. 🎶
+
+![Final Overview](documents/final_overview.png)
 
 ---
 
