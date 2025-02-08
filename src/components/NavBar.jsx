@@ -8,7 +8,6 @@ import btnStyles from './Button.module.css';
 
 const NavBar = () => {
     const { user, logout } = useAuth();
-    console.log('User object:', user);
     const isComposer = user?.is_composer;
     const isReviewer = user?.is_reviewer;
 

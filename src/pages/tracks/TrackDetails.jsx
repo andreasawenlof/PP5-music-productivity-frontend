@@ -54,28 +54,32 @@ const TrackDetails = () => {
                 </span>
             </p>
             {isComposer && (
-                <div className={styles.buttonsContainer}>
-                    <span>
-                        <button
-                            className={btnStyles.editTwo}
-                            onClick={() => navigate(`/tracks/${track.id}/edit`)}
-                        >
-                            Edit
-                        </button>
-                    </span>
-                    &nbsp;&nbsp;
-                    <span>
-                        <button
-                            className={btnStyles.delete}
-                            size='sm'
-                            onClick={() => handleDelete(track.id)} // ✅ Delete and redirect
-                        >
-                            Delete
-                        </button>
-                    </span>
-                </div>
+                <>
+                    <div className={styles.buttonsContainer}>
+                        <span>
+                            <button
+                                className={btnStyles.editTwo}
+                                onClick={() =>
+                                    navigate(`/tracks/${track.id}/edit`)
+                                }
+                            >
+                                Edit
+                            </button>
+                        </span>
+                        &nbsp;&nbsp;
+                        <span>
+                            <button
+                                className={btnStyles.delete}
+                                size='sm'
+                                onClick={() => handleDelete(track.id)} // ✅ Delete and redirect
+                            >
+                                Delete
+                            </button>
+                        </span>
+                    </div>
+                    <CommentList trackId={track.id} />
+                </>
             )}
-            <CommentList trackId={track.id} />
         </div>
     );
 };

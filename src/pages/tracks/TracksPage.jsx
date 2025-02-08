@@ -29,7 +29,7 @@ const TracksPage = () => {
                 const response = await axiosReq.get('/api/tracks/');
                 setTracks(response.data);
             } catch (err) {
-                setError('Failed to load tracks. Please try again.');
+                setError('No tracks Available');
             } finally {
                 setLoading(false);
             }

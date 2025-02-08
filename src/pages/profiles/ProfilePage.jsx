@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { axiosReq, axiosRes } from '../../api/axiosDefaults';
 import { useAuth } from '../../contexts/AuthContext';
 import styles from './ProfilePage.module.css';
@@ -20,6 +20,7 @@ const ProfilePage = () => {
     const [editMode, setEditMode] = useState(false); // ✅ Toggle Edit Mode
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchProfile = async () => {
@@ -31,6 +32,7 @@ const ProfilePage = () => {
             } catch (err) {
                 console.error('❌ Error fetching profile:', err);
                 setError('Failed to load profile.');
+                navigate('/404');
             } finally {
                 setLoading(false);
             }
