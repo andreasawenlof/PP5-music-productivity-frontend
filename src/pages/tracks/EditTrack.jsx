@@ -8,10 +8,12 @@ import Container from 'react-bootstrap/Container';
 import Alert from 'react-bootstrap/Alert';
 import formStyles from '../../components/forms.module.css';
 import btnStyles from '../../components/Button.module.css';
+import { useAuth } from '../../contexts/AuthContext';
 
 const EditTrack = () => {
     const { id } = useParams(); // ✅ Get track ID from URL
     const navigate = useNavigate();
+    const { user } = useAuth();
 
     // ✅ State for form options
     const [albums, setAlbums] = useState([]);
@@ -66,6 +68,14 @@ const EditTrack = () => {
 
         fetchData();
     }, [id]);
+
+    useEffect(() => {
+        if (user === null) {
+            navigate('/login', { state: { from: '/tracks/create' } });
+        }
+    }, [user, navigate]);
+
+    if (user === undefined) return null;
 
     if (!track) return <p>Loading...</p>;
 
