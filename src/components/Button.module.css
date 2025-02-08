@@ -27,7 +27,6 @@
     padding: 8px 14px;
     border: 2px solid var(--accent);
     background: transparent;
-    margin-right: 20px;
 }
 
 .tracksBtn:hover {
@@ -39,6 +38,7 @@
 .createTrackBtn {
     background-color: var(--accent);
     color: var(--bg-primary);
+    margin-right: 20px;
 }
 
 .createTrackBtn:hover {
