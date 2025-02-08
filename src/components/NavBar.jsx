@@ -37,13 +37,6 @@ const NavBar = () => {
                     <Nav className='ms-auto'>
                         {user ? (
                             <>
-                                <NavLink
-                                    className={`${btnStyles.tracksBtn} ${btnStyles.btn}`}
-                                    to='/tracks'
-                                >
-                                    {isReviewer ? 'Pending Tracks' : 'Tracks'}
-                                </NavLink>
-
                                 {isComposer && (
                                     <NavLink
                                         className={`${btnStyles.createTrackBtn} ${btnStyles.btn}`}
@@ -52,6 +45,13 @@ const NavBar = () => {
                                         + Create
                                     </NavLink>
                                 )}
+                                <NavLink
+                                    className={`${btnStyles.tracksBtn} ${btnStyles.btn}`}
+                                    to='/tracks'
+                                >
+                                    {isReviewer ? 'Pending Tracks' : 'Tracks'}
+                                </NavLink>
+
                                 <div
                                     className={`${styles.navAvatarContainer} ${styles.navAvatar}`}
                                 >
