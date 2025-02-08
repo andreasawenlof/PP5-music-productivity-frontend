@@ -29,3 +29,4 @@ README5
 *.sln
 *.sw?
 
+dist/
