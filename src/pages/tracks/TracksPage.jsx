@@ -76,7 +76,7 @@ const TracksPage = () => {
             </h2>
 
             {/* 🔍 Search & Filters */}
-            <Row className='mb-3'>
+            <Row>
                 <Col md={4}>
                     <Form.Control
                         type='search'
@@ -84,11 +84,12 @@ const TracksPage = () => {
                         name='search'
                         value={filters.search}
                         onChange={setFilters}
+                        className='mb-3 mt-sm-3'
                     />
                 </Col>
                 <Col md={2}>
                     <Form.Select
-                        className='mt-sm-3'
+                        className='mb-3 mt-sm-3'
                         name='genre'
                         value={filters.genre}
                         onChange={setFilters}
@@ -102,7 +103,7 @@ const TracksPage = () => {
                 </Col>
                 <Col md={2}>
                     <Form.Select
-                        className='mt-sm-3'
+                        className='mb-3 mt-sm-3'
                         name='mood'
                         value={filters.mood}
                         onChange={setFilters}
@@ -116,7 +117,7 @@ const TracksPage = () => {
                 </Col>
                 <Col md={2}>
                     <Form.Select
-                        className='mt-sm-3'
+                        className='mb-3 mt-sm-3'
                         name='status'
                         value={filters.status}
                         onChange={setFilters}
@@ -134,7 +135,7 @@ const TracksPage = () => {
                 </Col>
                 <Col md={2}>
                     <Form.Select
-                        className='mt-sm-3'
+                        className='mb-5 mt-sm-3'
                         name='vocalsNeeded'
                         value={filters.vocalsNeeded}
                         onChange={setFilters}

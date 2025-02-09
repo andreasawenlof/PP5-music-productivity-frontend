@@ -48,14 +48,14 @@ const NavBar = () => {
                             <>
                                 {isComposer && (
                                     <NavLink
-                                        className={`${btnStyles.createTrackBtn} ${btnStyles.btn} mt-sm-3`}
+                                        className={`${btnStyles.createTrackBtn} ${btnStyles.btn}`}
                                         to='/tracks/create'
                                     >
                                         + Create
                                     </NavLink>
                                 )}
                                 <NavLink
-                                    className={`${btnStyles.tracksBtn} ${btnStyles.btn} mt-sm-3`}
+                                    className={`${btnStyles.tracksBtn} ${btnStyles.btn}`}
                                     to='/tracks'
                                 >
                                     {isReviewer ? 'Pending Tracks' : 'Tracks'}
@@ -75,7 +75,7 @@ const NavBar = () => {
                                     </NavLink>
                                 </div>
                                 <button
-                                    className={`${btnStyles.logoutBtn} ${btnStyles.btn} mt-sm-3 mb-sm-3`}
+                                    className={`${btnStyles.logoutBtn} ${btnStyles.btn}`}
                                     onClick={logout}
                                 >
                                     Logout
@@ -84,13 +84,13 @@ const NavBar = () => {
                         ) : (
                             <>
                                 <NavLink
-                                    className={`${btnStyles.loginBtn} ${btnStyles.btn} mt-sm-3`}
+                                    className={`${btnStyles.loginBtn} ${btnStyles.btn}`}
                                     to='/login'
                                 >
                                     Login
                                 </NavLink>
                                 <NavLink
-                                    className={`${btnStyles.signupBtn} ${btnStyles.btn} mt-sm-3`}
+                                    className={`${btnStyles.signupBtn} ${btnStyles.btn}`}
                                     to='/signup'
                                 >
                                     Sign Up
