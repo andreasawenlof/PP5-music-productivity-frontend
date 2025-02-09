@@ -118,8 +118,6 @@ _(Future Feature)_ Advanced filtering & search options.
 ✔ _(Future Feature)_ Review log with **revision history**.  
 ✔ _(Future Feature)_ Revision counter for **internal tracking (only seen by Composers)**.
 
-![Comments & Reviews](documents/comments.png)
-
 ---
 
 ## 🚀 Future Features
@@ -158,10 +156,10 @@ npm install
 npm start
 ```
 
-### **3️⃣ Deployment** _(Optional: To be expanded if deployed on Heroku or Vercel)_
+### **3️⃣ Deployment** \_
 
--   Frontend hosted on **[Vercel/Netlify](documents/deployment.png)**
--   Backend hosted on **[Heroku](documents/deployment.png)**
+-   Frontend hosted on **Heroku**
+-   Backend hosted on **Heroku**
 
 ---
 
