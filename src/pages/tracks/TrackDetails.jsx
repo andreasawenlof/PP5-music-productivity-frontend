@@ -38,7 +38,6 @@ const TrackDetails = () => {
     return (
         <div className={styles.trackDetailsContainer}>
             <h2 className={styles.trackTitle}>{track.title}</h2>
-
             <p className={styles.trackMeta}>
                 {track?.album_name || 'No Album'}
             </p>
@@ -46,12 +45,31 @@ const TrackDetails = () => {
                 {track?.genre_name || 'No Genre'} |{' '}
                 {track?.mood_name || 'No Mood'}
             </p>
-
             <p className={styles.trackInfo}>
                 <strong>Status:</strong>{' '}
                 <span className={styles.trackStatus}>
                     {track.status_display || track.status}
                 </span>
+            </p>
+            {track.vocals_needed && (
+                <>
+                    🎤 <strong>Vocals Needed:</strong> {track.vocals_status}
+                </>
+            )}
+            <p>
+                <strong>Project Type:</strong>{' '}
+                <span>{track?.project_type_name || 'No Project Type'}</span>(
+            </p>
+            <p>
+                <strong>Instruments:</strong>{' '}
+                <span>
+                    {track?.instrument_names?.join(', ') ||
+                        'No Instruments yet'}
+                </span>
+            </p>
+            <p>
+                🗓️ <strong>Added:</strong>{' '}
+                {new Date(track.created_at).toLocaleDateString()}
             </p>
             {isComposer && (
                 <>

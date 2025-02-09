@@ -4,7 +4,7 @@
 
 The **Music Productivity App** is designed for **composers, producers, and music professionals** to streamline their workflow. It eliminates tedious admin work, allowing users to efficiently **track, manage, and collaborate** on their compositions in a structured system.
 
-![Am I Responsive Screenshot](src/assets/docs/responsive.png)
+![Am I Responsive Screenshot](documents/responsive.png)
 
 ---
 
@@ -21,6 +21,10 @@ The **Music Productivity App** is designed for **composers, producers, and music
 -   [Credits](#credits)
 
 ---
+
+## Description and Purpose
+
+This app is a music productivity app. This tool tracks, manage and helps composers and producers and others in the music industry. They can focus more on their creativity and things they're passio ate about. The goal is for this tool to take care of things like admin tasks, mundane tasks and tediousness. It’s not just your average tracking tool, it’s much more. One can track their work and progress with their team but also having a very transparent communication with their supervisors, reviewers and publishers.
 
 ## 🖌 UX & Design
 
@@ -163,7 +167,7 @@ npm start
 
 ## ✅ Testing
 
-A full breakdown of testing procedures is available in [`TESTING.md`](#).
+A full breakdown of testing procedures is available in [`TESTING.md`](TESTING.md).
 
 ### **Key Tests**
 
@@ -172,8 +176,6 @@ A full breakdown of testing procedures is available in [`TESTING.md`](#).
 ✔ **User Role Access Control** – Reviewers cannot modify tracks.  
 ✔ **Authentication & Authorization** – Secure login/logout & user permissions.  
 ✔ **Responsiveness** – Cross-browser and mobile compatibility.
-
-![Testing](documents/testing.png)
 
 ---
 
@@ -259,9 +261,11 @@ _so multiple people can track progress._
 ✔ **Frontend:** React 19, React Bootstrap, CSS Modules  
 ✔ **Backend:** Django 4.2, Django REST Framework 3.15  
 ✔ **Authentication:** JWT, dj-rest-auth  
-✔ **Deployment:** _(To be documented)_  
+✔ **Deployment:** Heroku
 ✔ **Database:** PostgreSQL  
-✔ **Hosting:** _(Optional: Vercel, Heroku, Netlify, etc.)_
+✔ **Hosting:** Heroku
+
+_While the curriculum used Django 3.2 and React 17, I chose to update to Django 4.2 and React 19 for a more modern tech stack, ensuring long-term maintainability and aligning with industry standards. This required additional research and adjustments beyond the provided material._
 
 ---
 
@@ -272,7 +276,8 @@ This project was developed as part of a **portfolio submission** for Code Instit
 Big thanks to:
 
 -   **OpenAI & Online Resources** – For debugging & research.
--   **Developers & Peers** – For feedback & best practices.
+-   **The Swedish Community on Slack** - For always being there and helpful.
+-   **JörgenDIF** - For always having time and answering questions and helping me give good advice.
 
 ### Special thanks to:
 
@@ -286,7 +291,7 @@ Big thanks to:
 
 This app **streamlines music production workflows**, reduces admin tasks, and **keeps teams in sync**—all within one structured system. More music, less hassle. 🎶
 
-![Final Overview](documents/final_overview.png)
+![Final Overview](documents/final-overview.png)
 
 ---
 
@@ -295,8 +300,3 @@ This app **streamlines music production workflows**, reduces admin tasks, and **
 > **Note**: This project is submitted for educational purposes only and is not open-source. No external use, copying, or distribution is allowed beyond the scope of this assessment.
 >
 > For inquiries regarding usage or collaboration, please contact the project owner.
-
-🚀 **Next Steps**:
-1️⃣ Add **screenshots & images** where placeholders are.  
-2️⃣ Finalize **deployment details** (if applicable).  
-3️⃣ Review & submit! 🎯

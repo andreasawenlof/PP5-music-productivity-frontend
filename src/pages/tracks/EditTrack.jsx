@@ -167,7 +167,6 @@ const EditTrack = () => {
                         ))}
                     </Form.Select>
                 </Form.Group>
-
                 <Form.Group controlId='status'>
                     <Form.Label>Status</Form.Label>
                     <Form.Select

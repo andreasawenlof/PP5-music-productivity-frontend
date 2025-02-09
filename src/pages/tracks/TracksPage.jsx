@@ -93,9 +93,10 @@ const TracksPage = () => {
                         onChange={setFilters}
                     >
                         <option value=''>Genre</option>
-                        <option value='Orchestral'>Orchestral</option>
-                        <option value='Trailer Music'>Trailer Music</option>
+                        <option value='EDM'>EDM</option>
+                        <option value='Epic'>Epic</option>
                         <option value='Electronic'>Electronic</option>
+                        <option value='Rock'>Rock</option>
                     </Form.Select>
                 </Col>
                 <Col md={2}>
@@ -105,9 +106,10 @@ const TracksPage = () => {
                         onChange={setFilters}
                     >
                         <option value=''>Mood</option>
-                        <option value='Epic'>Epic</option>
-                        <option value='Dramatic'>Dramatic</option>
+                        <option value='Angry'>Angry</option>
                         <option value='Happy'>Happy</option>
+                        <option value='Hype'>Hype</option>
+                        <option value='Sad'>Sad</option>
                     </Form.Select>
                 </Col>
                 <Col md={2}>

@@ -5,14 +5,18 @@ import { useAuth } from '../contexts/AuthContext';
 import { NavLink } from 'react-router-dom';
 import styles from './NavBar.module.css';
 import btnStyles from './Button.module.css';
+import useClickOutsideToggle from '../hooks/useClickOutsideToggle';
 
 const NavBar = () => {
     const { user, logout } = useAuth();
     const isComposer = user?.is_composer;
     const isReviewer = user?.is_reviewer;
 
+    const { expanded, setExpanded, ref } = useClickOutsideToggle();
+
     return (
         <Navbar
+            expanded={expanded}
             expand='md'
             className={styles.navbar}
             fixed='top'
@@ -25,7 +29,11 @@ const NavBar = () => {
                 >
                     🎼 MP App
                 </Navbar.Brand>
-                <Navbar.Toggle aria-controls='navbarScroll' />
+                <Navbar.Toggle
+                    ref={ref}
+                    onClick={() => setExpanded(!expanded)}
+                    aria-controls='navbarScroll'
+                />
                 <Navbar.Collapse id='navbarScroll'>
                     {user && (
                         <img
