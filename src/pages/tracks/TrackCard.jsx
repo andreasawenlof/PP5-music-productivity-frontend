@@ -22,7 +22,7 @@ const TrackCard = ({ track, setTracks }) => {
             onClick={() => navigate(`/tracks/${track.id}`)}
         >
             <Card.Body>
-                <div className='d-flex justify-content-between'>
+                <div className='d-flex justify-content-between flex-wrap'>
                     <div>
                         <Card.Title>{track.title}</Card.Title>
                         <Card.Text>{track?.album_name || 'No Album'}</Card.Text>

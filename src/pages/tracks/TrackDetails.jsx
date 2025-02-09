@@ -58,7 +58,7 @@ const TrackDetails = () => {
             )}
             <p>
                 <strong>Project Type:</strong>{' '}
-                <span>{track?.project_type_name || 'No Project Type'}</span>(
+                <span>{track?.project_type_name || 'No Project Type'}</span>
             </p>
             <p>
                 <strong>Instruments:</strong>{' '}

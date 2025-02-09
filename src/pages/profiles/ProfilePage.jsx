@@ -9,6 +9,7 @@ import Container from 'react-bootstrap/Container';
 import Alert from 'react-bootstrap/Alert';
 import Spinner from 'react-bootstrap/Spinner';
 import btnStyles from '../../components/Button.module.css';
+import formStyles from '../../components/Forms.module.css';
 
 const ProfilePage = () => {
     const { id } = useParams();
@@ -120,19 +121,19 @@ const ProfilePage = () => {
                             type='file'
                             accept='image/*'
                             onChange={(e) => setAvatar(e.target.files[0])}
-                            className={styles.uploadInput}
+                            className={`${formStyles.formInput} w-50`}
                         />
 
-                        <div>
+                        <div className='d-flex flex-column'>
                             <Button
                                 type='submit'
-                                className={btnStyles.postButton}
+                                className={`${btnStyles.postButton}`}
                             >
                                 Save Changes
                             </Button>
                             <Button
                                 onClick={handleCancel}
-                                className={btnStyles.tracksBtn}
+                                className={`${btnStyles.tracksBtn} rounded mt-3`}
                             >
                                 Cancel
                             </Button>

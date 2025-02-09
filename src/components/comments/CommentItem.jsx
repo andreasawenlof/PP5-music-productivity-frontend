@@ -37,20 +37,15 @@ const CommentItem = ({ comment, setComments, setEditingComment }) => {
 
     return (
         <div className={styles.commentItem}>
-            <Link to={`/profiles/${user.profile_id}`}>
-                <img
-                    src={comment.profile_image}
-                    alt='avatar'
-                    className={styles.avatar}
-                />
-            </Link>
+            <img
+                src={comment.profile_image}
+                alt='avatar'
+                className={styles.avatar}
+            />
             <div className={styles.commentContent}>
-                <Link
-                    className={styles.commentAuthor}
-                    to={`/profiles/${user.profile_id}`}
-                >
-                    <strong>{comment.display_name}</strong>
-                </Link>
+                <strong className={styles.commentAuthor}>
+                    {comment.display_name}
+                </strong>
                 {isEditing ? (
                     <form
                         onSubmit={handleEditClick}
@@ -68,9 +63,8 @@ const CommentItem = ({ comment, setComments, setEditingComment }) => {
                             Save
                         </button>
                         <button
-                            type='button'
+                            className={btnStyles.tracksBtn}
                             onClick={() => setIsEditing(false)}
-                            className={styles.cancelButton}
                         >
                             Cancel
                         </button>

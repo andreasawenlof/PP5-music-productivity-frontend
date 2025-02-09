@@ -108,7 +108,7 @@ Tested the application on multiple browsers:
 ❌ **Issue:** When trying to access a specific profile while logged out, the app throws a **500 error** due to `'AnonymousUser' object has no attribute 'profile'`.  
 💡 **Fix:** Implement proper error handling when accessing profiles while logged out.
 
-❌ **Issue:** Comment name/avatar links to profile but only redirects to the **logged-in user’s profile** instead of the correct user.  
+❌ **Issue:** Comment name/avatar links to profile but only redirects to the **logged-in user’s profile** instead of the correct user. Workaround to remove the link instead.
 💡 **Fix:** Ensure correct user profile links are generated.
 
 ❌ **Issue:** No way to determine which tracks are **assigned to a composer**.  

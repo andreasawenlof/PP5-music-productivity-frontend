@@ -100,7 +100,7 @@ const CommentForm = ({
                 <button
                     type='button'
                     onClick={handleCancel}
-                    className={btnStyles.cancelButton}
+                    className={`${btnStyles.btn} ${btnStyles.tracksBtn} rounded mt-2 me-auto `}
                 >
                     Cancel
                 </button>
