@@ -35,7 +35,7 @@
 -   **Warnings:** Minor **trailing slash warnings** on self-closing elements (e.g., `<meta />`, `<link />`). These **do not affect functionality**.
 
 **Validation Screenshot:**
-![HTML Validation](src/assets/validation/htmlvalidate.png)
+![HTML Validation](documents/validation/htmlValid.png)
 
 ---
 
@@ -45,7 +45,7 @@
 -   No issues detected with CSS structure.
 
 **Validation Screenshot:**
-![CSS Validation](src/assets/validation/css.png)
+![CSS Validation](documents/validation/cssValid.png)
 
 ---
 
@@ -59,13 +59,18 @@ Lighthouse test was conducted across multiple pages. Scores:
 -   **Create Post Page:** ✅ Passed.
 
 **Lighthouse Screenshots:**
-![Lighthouse Home](src/assets/lighthouse/home-lighthouse.png)
+![Lighthouse Tracks](documents/validation/lighthousetracks.png)
 
-![Lighthouse Signup](src/assets/lighthouse/sign-up-lighthouse.png)
+![Lighthouse Signup](documents/validation/lighthousesignup.png)
 
-![Lighthouse Login](src/assets/lighthouse/login-lighthouse.png)
+![Lighthouse Login](documents/validation/lighthouselogin.png)
 
-![Lighthouse Profile](src/assets/lighthouse/profile-lighthouse.png)
+![Lighthouse Profile](documents/validation/lighthouseprofile.png)
+
+**Mobile**
+![Lighthouse Mobile Tracks](documents/validation/lighthousetracks-mobile.png)
+
+![Lighthouse Mobile Login](documents/validation/lighthouselogin-mobile.png)
 
 ---
 
@@ -73,14 +78,14 @@ Lighthouse test was conducted across multiple pages. Scores:
 
 Tested the application on multiple browsers:
 
-| **Browser**     | **Operating System** | **Result**                     |
-| --------------- | -------------------- | ------------------------------ |
-| Google Chrome   | macOS Sonoma         | ✅ Passed                      |
-| Mozilla Firefox | Windows 10           | ✅ Passed                      |
-| Microsoft Edge  | Windows 10           | ✅ Passed (Minor UI variation) |
-| Safari          | macOS Sonoma         | ✅ Passed                      |
-| Opera           | Windows 10           | ✅ Passed                      |
-| Safari          | iOS 17               | ✅ Passed                      |
+| **Browser**     | **Operating System** | **Result** |
+| --------------- | -------------------- | ---------- |
+| Google Chrome   | macOS Sequoia        | ✅ Passed  |
+| Brave           | macOS Sequoia        | ✅ Passed  |
+| Mozilla Firefox | macOS Sequoia        | ✅ Passed  |
+| Safari          | macOS Sequoia        | ✅ Passed  |
+| Safari          | iPhone X             | ✅ Passed  |
+| Brave           | iPhone X             | ✅ Passed  |
 
 ---
 
@@ -91,7 +96,7 @@ Tested the application on multiple browsers:
 -   **Minor contrast issues** flagged but do not impact usability.
 
 **Wave Screenshot:**
-![Wave Test](src/assets/wave.png)
+![Wave Test](documents/validation/waveValid.png)
 
 ---
 
@@ -117,5 +122,3 @@ Tested the application on multiple browsers:
 ✅ **No critical issues in W3C validation or accessibility tests**  
 ✅ **Application is functional and ready for submission**  
 ❌ **Known issues documented for future improvements**
-
-🚀 **Project is ready for submission!**
