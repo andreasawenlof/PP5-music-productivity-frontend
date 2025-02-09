@@ -88,6 +88,7 @@ const TracksPage = () => {
                 </Col>
                 <Col md={2}>
                     <Form.Select
+                        className='mt-sm-3'
                         name='genre'
                         value={filters.genre}
                         onChange={setFilters}
@@ -101,6 +102,7 @@ const TracksPage = () => {
                 </Col>
                 <Col md={2}>
                     <Form.Select
+                        className='mt-sm-3'
                         name='mood'
                         value={filters.mood}
                         onChange={setFilters}
@@ -114,6 +116,7 @@ const TracksPage = () => {
                 </Col>
                 <Col md={2}>
                     <Form.Select
+                        className='mt-sm-3'
                         name='status'
                         value={filters.status}
                         onChange={setFilters}
@@ -131,6 +134,7 @@ const TracksPage = () => {
                 </Col>
                 <Col md={2}>
                     <Form.Select
+                        className='mt-sm-3'
                         name='vocalsNeeded'
                         value={filters.vocalsNeeded}
                         onChange={setFilters}

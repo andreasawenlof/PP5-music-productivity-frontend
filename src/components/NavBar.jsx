@@ -30,6 +30,7 @@ const NavBar = () => {
                     🎼 MP App
                 </Navbar.Brand>
                 <Navbar.Toggle
+                    className={btnStyles.edit}
                     ref={ref}
                     onClick={() => setExpanded(!expanded)}
                     aria-controls='navbarScroll'
@@ -42,19 +43,19 @@ const NavBar = () => {
                             className={styles.mobileAvatar}
                         />
                     )}
-                    <Nav className='ms-auto'>
+                    <Nav className='ms-auto text-center'>
                         {user ? (
                             <>
                                 {isComposer && (
                                     <NavLink
-                                        className={`${btnStyles.createTrackBtn} ${btnStyles.btn}`}
+                                        className={`${btnStyles.createTrackBtn} ${btnStyles.btn} mt-sm-3`}
                                         to='/tracks/create'
                                     >
                                         + Create
                                     </NavLink>
                                 )}
                                 <NavLink
-                                    className={`${btnStyles.tracksBtn} ${btnStyles.btn}`}
+                                    className={`${btnStyles.tracksBtn} ${btnStyles.btn} mt-sm-3`}
                                     to='/tracks'
                                 >
                                     {isReviewer ? 'Pending Tracks' : 'Tracks'}
@@ -74,7 +75,7 @@ const NavBar = () => {
                                     </NavLink>
                                 </div>
                                 <button
-                                    className={`${btnStyles.logoutBtn} ${btnStyles.btn}`}
+                                    className={`${btnStyles.logoutBtn} ${btnStyles.btn} mt-sm-3 mb-sm-3`}
                                     onClick={logout}
                                 >
                                     Logout
@@ -83,13 +84,13 @@ const NavBar = () => {
                         ) : (
                             <>
                                 <NavLink
-                                    className={`${btnStyles.loginBtn} ${btnStyles.btn}`}
+                                    className={`${btnStyles.loginBtn} ${btnStyles.btn} mt-sm-3`}
                                     to='/login'
                                 >
                                     Login
                                 </NavLink>
                                 <NavLink
-                                    className={`${btnStyles.signupBtn} ${btnStyles.btn}`}
+                                    className={`${btnStyles.signupBtn} ${btnStyles.btn} mt-sm-3`}
                                     to='/signup'
                                 >
                                     Sign Up
