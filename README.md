@@ -8,6 +8,10 @@ The **Music Productivity App** is designed for **composers, producers, and music
 
 ---
 
+## 🚀 Live Demo
+
+[🎵 View the Live App Here](https://mp-frontend-4a5fc1537e05.herokuapp.com/)
+
 ## 📋 Table of Contents
 
 -   [Features & User Roles](#features--user-roles)
