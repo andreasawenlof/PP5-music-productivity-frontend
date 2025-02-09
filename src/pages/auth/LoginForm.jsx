@@ -97,7 +97,12 @@ function LoginForm() {
                         </Form.Group>
 
                         <Button
-                            className={`${btnStyles.postButton}`}
+                            variant='none'
+                            className={`${
+                                loading
+                                    ? btnStyles.tracksBtn
+                                    : btnStyles.postButton
+                            }`}
                             type='submit'
                             disabled={loading}
                         >
@@ -120,74 +125,6 @@ function LoginForm() {
                 className={`my-auto d-none d-md-block p-2`}
             ></Col>
         </Row>
-        // <Row>
-        //     <Col
-        //         className='my-auto py-2 p-md-2'
-        //         md={6}
-        //     >
-        //         <Container className='p-4'>
-        //             <h2 className='mb-3'>Login</h2>
-        //         <Form
-        //             className={`${formStyles.formContainer}`}
-        //             onSubmit={handleSubmit}
-        //         >
-
-        //             {error && <Alert variant='danger'>{error}</Alert>}
-
-        //             <Form.Group
-        //                 className='mb-3'
-        //                 controlId='username'
-        //             >
-        //                 <Form.Label>Username</Form.Label>
-        //                 <Form.Control
-        //                     className={`${formStyles.formInput}`}
-        //                     type='text'
-        //                     name='username'
-        //                     value={credentials.username}
-        //                     onChange={handleChange}
-        //                     placeholder='Enter username'
-        //                     required
-        //                 />
-        //             </Form.Group>
-
-        //             <Form.Group
-        //                 className='mb-3'
-        //                 controlId='password'
-        //             >
-        //                 <Form.Label>Password</Form.Label>
-        //                 <Form.Control
-        //                     className={`${formStyles.formInput}`}
-        //                     type='password'
-        //                     name='password'
-        //                     value={credentials.password}
-        //                     onChange={handleChange}
-        //                     placeholder='Enter password'
-        //                     required
-        //                 />
-        //             </Form.Group>
-
-        //             <Button
-        //                 className={`${btnStyles.postButton}`}
-        //                 type='submit'
-        //                 disabled={loading}
-        //             >
-        //                 {loading ? 'Logging in...' : 'Login'}
-        //             </Button>
-        //         </Form>
-        //         <Container className={`mt-3 text-center`}>
-        //             <Link
-        //                 className={`${btnStyles.primaryBtn} ${btnStyles.btn}`}
-        //                 to='/signup'
-        //             >
-        //                 Don't have an account? <span>Sign up</span>
-        //             </Link>
-        //         </Container>
-        //     </Container>
-        //     <Col
-        //         md={6}
-        //         className={`my-auto d-none d-md-block p-2`}
-        //     ></Col>
-        // </Row>
     );
 }
 
