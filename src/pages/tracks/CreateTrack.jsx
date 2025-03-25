@@ -87,6 +87,7 @@ const CreateTrack = () => {
                         required
                     />
                 </Form.Group>
+                {/*                 
                 <Form.Group controlId='album'>
                     <Form.Label>Album Name</Form.Label>
                     <Form.Select
@@ -94,7 +95,7 @@ const CreateTrack = () => {
                         name='album'
                     >
                         <option value=''>No Album</option> {/* Add this line */}
-                        {albums.map((album) => (
+                {/* {albums.map((album) => (
                             <option
                                 key={album.id}
                                 value={album.id}
@@ -103,7 +104,7 @@ const CreateTrack = () => {
                             </option>
                         ))}
                     </Form.Select>
-                </Form.Group>
+                </Form.Group> */}
                 <Form.Group controlId='assignedComposer'>
                     <Form.Label>Assigned Composer</Form.Label>
                     <Form.Control
@@ -175,7 +176,6 @@ const CreateTrack = () => {
                         />
                     ))}
                 </Form.Group>
-
                 <Form.Group controlId='status'>
                     <Form.Label>Status</Form.Label>
                     <Form.Select
@@ -192,7 +192,6 @@ const CreateTrack = () => {
                         </option>
                     </Form.Select>
                 </Form.Group>
-
                 <Form.Group controlId='vocals_needed'>
                     <Form.Check
                         type='checkbox'
@@ -208,7 +207,6 @@ const CreateTrack = () => {
                         name='notes'
                     />
                 </Form.Group>
-
                 <Button
                     type='submit'
                     className={`${btnStyles.postButton} mt-3`}

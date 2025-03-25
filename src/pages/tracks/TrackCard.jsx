@@ -25,7 +25,7 @@ const TrackCard = ({ track, setTracks }) => {
                 <div className='d-flex justify-content-between flex-wrap'>
                     <div>
                         <Card.Title>{track.title}</Card.Title>
-                        <Card.Text>{track?.album_name || 'No Album'}</Card.Text>
+                        {/* <Card.Text>{track?.album_name || 'No Album'}</Card.Text> */}
                         <Card.Subtitle className='mb-2'>
                             {track?.genre_name || 'No Genre'} |{' '}
                             {track?.mood_name || 'No Mood'}

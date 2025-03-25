@@ -98,7 +98,7 @@ const EditTrack = () => {
                         defaultValue={track.title}
                     />
                 </Form.Group>
-                <Form.Group controlId='album'>
+                {/* <Form.Group controlId='album'>
                     <Form.Label>Album Name</Form.Label>
                     <Form.Select
                         className={`${formStyles.formInput}`}
@@ -106,7 +106,7 @@ const EditTrack = () => {
                         defaultValue={track.album || ''}
                     >
                         <option value=''>No Album</option> {/* Add this line */}
-                        {albums.map((album) => (
+                {/* {albums.map((album) => (
                             <option
                                 key={album.id}
                                 value={album.id}
@@ -115,7 +115,7 @@ const EditTrack = () => {
                             </option>
                         ))}
                     </Form.Select>
-                </Form.Group>
+                </Form.Group> */}
                 <Form.Group controlId='mood'>
                     <Form.Label>Mood</Form.Label>
                     <Form.Select

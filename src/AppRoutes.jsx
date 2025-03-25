@@ -8,6 +8,7 @@ import CreateTrack from './pages/tracks/CreateTrack';
 import EditTrack from './pages/tracks/EditTrack';
 import ProfilePage from './pages/profiles/ProfilePage';
 import NotFound from './components/NotFound';
+import WelcomePage from './pages/WelcomePage';
 
 function AppRoutes() {
     const { user } = useAuth(); // Get user state from AuthContext
@@ -16,7 +17,7 @@ function AppRoutes() {
         <Routes>
             <Route
                 path='/'
-                element={<LoginForm />}
+                element={<WelcomePage />}
             />
             <Route
                 path='/tracks'

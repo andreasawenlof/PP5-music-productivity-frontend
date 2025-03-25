@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
-import useAuthRedirect from '../../hooks/useAuthRedirect'; // ✅ Import the custom hook
 import { Link, useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -18,12 +17,6 @@ function LoginForm() {
     });
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
-
-    // ✅ Use the custom hook to check if the user is already logged in
-    const isLoading = useAuthRedirect();
-
-    // ✅ If auth check is still running, don't render the form yet
-    if (isLoading) return null;
 
     const handleChange = (e) => {
         setCredentials({

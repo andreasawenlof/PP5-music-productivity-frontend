@@ -38,9 +38,9 @@ const TrackDetails = () => {
     return (
         <div className={styles.trackDetailsContainer}>
             <h2 className={styles.trackTitle}>{track.title}</h2>
-            <p className={styles.trackMeta}>
+            {/* <p className={styles.trackMeta}>
                 {track?.album_name || 'No Album'}
-            </p>
+            </p> */}
             <p className={styles.trackMeta}>
                 {track?.genre_name || 'No Genre'} |{' '}
                 {track?.mood_name || 'No Mood'}

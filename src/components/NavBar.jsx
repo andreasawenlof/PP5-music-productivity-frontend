@@ -24,7 +24,7 @@ const NavBar = () => {
             <Container>
                 <Navbar.Brand
                     as={NavLink}
-                    to={user ? '/tracks' : '/login'}
+                    to='/'
                     className={styles.brand}
                 >
                     🎼 MP App

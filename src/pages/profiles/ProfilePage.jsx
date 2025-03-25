@@ -143,6 +143,21 @@ const ProfilePage = () => {
                     <div className={styles.profileInfo}>
                         <h3>{profile.display_name}</h3>
                         <p>{profile.bio || 'No bio yet...'}</p>
+                        {profile.is_composer && (
+                            <p>
+                                <strong>Role:</strong> Composer
+                            </p>
+                        )}
+                        {profile.is_reviewer && !profile.is_composer && (
+                            <p>
+                                <strong>Role:</strong> Reviewer
+                            </p>
+                        )}
+                        {!profile.is_composer && !profile.is_reviewer && (
+                            <p>
+                                <strong>Role:</strong> User
+                            </p>
+                        )}
                         {user && user.profile_id === profile.id && (
                             <Button
                                 onClick={() => setEditMode(true)} // ✅ Enables edit mode

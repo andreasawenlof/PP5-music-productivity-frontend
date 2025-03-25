@@ -23,7 +23,7 @@ const useAuthRedirect = () => {
             setIsLoading(false);
         } else {
             // ✅ If NOT logged in & accessing a protected page → Redirect to login & save page
-            if (location.pathname !== '/login') {
+            if (location.pathname !== '/') {
                 navigate('/login', { state: { from: location.pathname } });
             }
             setIsLoading(false);
