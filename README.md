@@ -28,7 +28,7 @@ The **Music Productivity App** is designed for **composers, producers, and music
 
 ## Description and Purpose
 
-This app is a music productivity app. This tool tracks, manage and helps composers and producers and others in the music industry. They can focus more on their creativity and things they're passio ate about. The goal is for this tool to take care of things like admin tasks, mundane tasks and tediousness. It’s not just your average tracking tool, it’s much more. One can track their work and progress with their team but also having a very transparent communication with their supervisors, reviewers and publishers.
+This app is a music productivity app. This tool tracks, manage and help composers and producers and others in the music industry. They can focus more on their creativity and things they're passionate about. The goal is for this tool to take care of things like admin tasks, mundane tasks and tediousness. It’s not just your average tracking tool, it’s much more. One can track their work and progress with their team but also having a very transparent communication with their supervisors, reviewers and publishers.
 
 ## 🖌 UX & Design
 
@@ -86,6 +86,14 @@ _(Contrast ratios were considered to meet accessibility guidelines, ensuring str
 ✔ _(Future Feature)_ Mark tracks as **Completed & Approved**.  
 ❌ Cannot assign moods, genres, instruments, or statuses.  
 ❌ Cannot delete or edit composer comments.
+
+### 🙋 Regular Users (Default)
+
+✔ Can browse the app after registering
+✔ Can see all tracks and details of tracks  
+❌ Cannot create or manage tracks  
+❌ Cannot comment or review  
+🚫 Have limited access until assigned a role by admin
 
 ---
 
@@ -160,10 +168,37 @@ npm install
 npm start
 ```
 
-### **3️⃣ Deployment** \_
+### **3️⃣ Deployment (Frontend on Heroku)**
 
--   Frontend hosted on **Heroku**
--   Backend hosted on **Heroku**
+1. **Create a new app on Heroku**
+
+    - Go to [Heroku Dashboard](https://dashboard.heroku.com/)
+    - Click **"New" → "Create new app"**
+    - Choose a unique name and region
+
+2. **Set up Heroku Buildpacks**
+
+    - In your app settings, under **Buildpacks**, add:
+        - `https://github.com/mars/create-react-app-buildpack`
+
+3. **Set Environment Variables (Config Vars)**
+
+    - Go to **Settings > Reveal Config Vars**
+    - Add:
+        - `REACT_APP_API_URL=https://your-backend.herokuapp.com/`
+        - Any other keys used in your app
+
+4. **Build the React App**
+    ```bash
+    npm run build
+    ```
+5. **Commit and Push to Heroku**
+    ```bash
+    git add .
+    git commit -m "Prepare frontend for deployment"
+    heroku git:remote -a your-heroku-app-name
+    git push heroku main
+    ```
 
 ---
 
@@ -173,10 +208,10 @@ A full breakdown of testing procedures is available in [`TESTING.md`](TESTING.md
 
 ### **Key Tests**
 
-✔ **CRUD Operations** – Create, edit, delete tracks, comments, and reviews.  
-✔ **Filtering & Searching** – Ensure smooth user navigation.  
-✔ **User Role Access Control** – Reviewers cannot modify tracks.  
-✔ **Authentication & Authorization** – Secure login/logout & user permissions.  
+✔ **CRUD Operations** – Create, edit, delete tracks, comments, and reviews.
+✔ **Filtering & Searching** – Ensure smooth user navigation.
+✔ **User Role Access Control** – Reviewers cannot modify tracks.
+✔ **Authentication & Authorization** – Secure login/logout & user permissions.
 ✔ **Responsiveness** – Cross-browser and mobile compatibility.
 
 ---
@@ -198,73 +233,73 @@ This app is designed for **two user roles: Composers and Reviewers.**
 
 ### 🎵 Track Management (CRUD)
 
-**As a Composer, I can create, edit, delete, and view songs/projects**  
-_so I can manage my work efficiently._  
-✔ Users can create, edit, and delete tracks.  
+**As a Composer, I can create, edit, delete, and view songs/projects**
+_so I can manage my work efficiently._
+✔ Users can create, edit, and delete tracks.
 ✔ Required fields must be filled; otherwise, an error message appears.
 
 ### 🔍 Filtering & Searching
 
-**As a User, I can filter and search tracks/albums by genre, mood, instruments, progress, name, and date**  
-_so I can quickly find what I need._  
-✔ Users can filter songs by multiple criteria.  
+**As a User, I can filter and search tracks/albums by genre, mood, instruments, progress, name, and date**
+_so I can quickly find what I need._
+✔ Users can filter songs by multiple criteria.
 ✔ Users can search for songs by title or keywords.
 
 ### 📌 Progress Tracking
 
-**As a User, I can mark a track/project as "In Progress" or "Completed"**  
-_so I can track my work._  
-✔ Users can update track progress statuses.  
+**As a User, I can mark a track/project as "In Progress" or "Completed"**
+_so I can track my work._
+✔ Users can update track progress statuses.
 ✔ Users can mark specific instruments as completed.
 
 ### 💬 Comment System
 
-**As a User, I can leave comments on a track/album**  
-_so I can provide feedback or notes._  
-✔ Users can comment on tracks.  
-✔ Comments are track-specific.  
+**As a User, I can leave comments on a track/album**
+_so I can provide feedback or notes._
+✔ Users can comment on tracks.
+✔ Comments are track-specific.
 ✔ Users can edit and delete their own comments.
 
 ### 🔑 User Authentication (Signup, Login, Logout)
 
-**As a User, I can sign up, log in, and log out**  
-_so that my data is secure._  
-✔ Users can sign up with username & password.  
-✔ Users can log in and receive an authentication token.  
-✔ Users can log out and remove their token.  
+**As a User, I can sign up, log in, and log out**
+_so that my data is secure._
+✔ Users can sign up with username & password.
+✔ Users can log in and receive an authentication token.
+✔ Users can log out and remove their token.
 ✔ If credentials are incorrect, an error message appears.
 
 ### 📂 Sorting System
 
-**As a User, I can sort tracks by name, date, or progress**  
-_so I can organize my work better._  
-✔ Users can sort by **date (newest/oldest)**.  
-✔ Users can sort **alphabetically**.  
+**As a User, I can sort tracks by name, date, or progress**
+_so I can organize my work better._
+✔ Users can sort by **date (newest/oldest)**.
+✔ Users can sort **alphabetically**.
 ✔ Users can sort by **progress (Completed/In Progress)**.
 
 ### 🎧 Upload Audio Preview _(Future Feature)_
 
-**As a User, I want to upload a short audio clip for each track**  
-_so that I can preview how it sounds._  
-✔ Users can upload an **MP3/WAV** file.  
+**As a User, I want to upload a short audio clip for each track**
+_so that I can preview how it sounds._
+✔ Users can upload an **MP3/WAV** file.
 ✔ The audio file plays on the track page.
 
 ### 🤝 Collaboration _(Future Feature)_
 
-**As a User, I can invite collaborators to a track/project**  
-_so multiple people can track progress._  
-✔ Users can **invite collaborators via email**.  
+**As a User, I can invite collaborators to a track/project**
+_so multiple people can track progress._
+✔ Users can **invite collaborators via email**.
 ✔ Collaborators can view and edit shared tracks/projects.
 
 ---
 
 ## 🖥 Technologies Used
 
-✔ **Frontend:** React 19, React Bootstrap, CSS Modules  
-✔ **Backend:** Django 4.2, Django REST Framework 3.15  
-✔ **Authentication:** JWT, dj-rest-auth  
+✔ **Frontend:** React 19, React Bootstrap, CSS Modules
+✔ **Backend:** Django 4.2, Django REST Framework 3.15
+✔ **Authentication:** JWT, dj-rest-auth
 ✔ **Deployment:** Heroku
-✔ **Database:** PostgreSQL  
+✔ **Database:** PostgreSQL
 ✔ **Hosting:** Heroku
 
 _While the curriculum used Django 3.2 and React 17, I chose to update to Django 4.2 and React 19 for a more modern tech stack, ensuring long-term maintainability and aligning with industry standards. This required additional research and adjustments beyond the provided material._
@@ -302,3 +337,7 @@ This app **streamlines music production workflows**, reduces admin tasks, and **
 > **Note**: This project is submitted for educational purposes only and is not open-source. No external use, copying, or distribution is allowed beyond the scope of this assessment.
 >
 > For inquiries regarding usage or collaboration, please contact the project owner.
+
+```
+
+```
