@@ -89,7 +89,7 @@ _(Contrast ratios were considered to meet accessibility guidelines, ensuring str
 
 ### 🙋 Regular Users (Default)
 
-✔ Can browse the app after registering
+✔ Can browse the app after registering  
 ✔ Can see all tracks and details of tracks  
 ❌ Cannot create or manage tracks  
 ❌ Cannot comment or review  
