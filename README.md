@@ -111,7 +111,7 @@ _(Contrast ratios were considered to meet accessibility guidelines, ensuring str
 
 _(Future Feature)_ Advanced filtering & search options.
 
-![Filtering & Searching](documents/filters.png)
+![Filtering & Searching](documents/filtering.png)
 
 ---
 
