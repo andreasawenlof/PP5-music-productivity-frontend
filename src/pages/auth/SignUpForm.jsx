@@ -5,6 +5,9 @@ import btnStyles from '../../components/Button.module.css';
 
 import { Form, Button, Col, Row, Container, Alert } from 'react-bootstrap';
 import axios from 'axios';
+import { useAuth } from '../../contexts/AuthContext';
+import { Navigate } from 'react-router-dom';
+import useAuthRedirect from '../../hooks/useAuthRedirect';
 
 const SignUpForm = () => {
     const [signUpData, setSignUpData] = useState({
@@ -17,6 +20,9 @@ const SignUpForm = () => {
     const [errors, setErrors] = useState({});
 
     const navigate = useNavigate();
+
+    const isLoading = useAuthRedirect();
+    if (isLoading) return null;
 
     const handleChange = (event) => {
         setSignUpData({

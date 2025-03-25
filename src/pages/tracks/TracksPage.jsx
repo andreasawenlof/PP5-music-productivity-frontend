@@ -20,7 +20,7 @@ const TracksPage = () => {
 
     useEffect(() => {
         if (user === undefined) return null;
-        if (!user) return navigate('/');
+        if (!user) return navigate('/tracks');
         // Commented this out for grading purposes only, the user is NOT supposed to have access to ANYTHING and should not know it exists
         // if (!isReviewer && !isComposer) return navigate('/404');
 

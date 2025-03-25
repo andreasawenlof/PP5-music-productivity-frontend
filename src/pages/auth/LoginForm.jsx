@@ -3,20 +3,23 @@ import { useAuth } from '../../contexts/AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import Alert from 'react-bootstrap/Alert';
 import formStyles from '../../components/Forms.module.css';
 import btnStyles from '../../components/Button.module.css';
 import { Col, Container, Row } from 'react-bootstrap';
+import useAuthRedirect from '../../hooks/useAuthRedirect';
 
 function LoginForm() {
     const { login } = useAuth();
     const navigate = useNavigate();
+    const isLoading = useAuthRedirect();
     const [credentials, setCredentials] = useState({
         username: '',
         password: '',
     });
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
+
+    if (isLoading) return null;
 
     const handleChange = (e) => {
         setCredentials({
@@ -32,8 +35,7 @@ function LoginForm() {
 
         try {
             await login(credentials.username, credentials.password);
-            const redirectTo = location.state?.from || '/tracks'; // ✅ Redirect to last visited page
-            navigate(redirectTo, { replace: true });
+            navigate('/tracks', { replace: true }); // ✅ Simplified redirect
         } catch (err) {
             console.error('Login error:', err);
             setError(
@@ -101,6 +103,8 @@ function LoginForm() {
                         >
                             {loading ? 'Logging in...' : 'Login'}
                         </Button>
+
+                        {error && <p className='text-danger mt-3'>{error}</p>}
                     </Form>
                 </Container>
 

@@ -54,7 +54,7 @@ export const AuthProvider = ({ children }) => {
             setUser(null);
             delete axiosReq.defaults.headers.common['Authorization'];
             delete axiosRes.defaults.headers.common['Authorization'];
-            navigate('/login');
+            navigate('/');
         }
     }, [navigate]);
 
