@@ -208,10 +208,10 @@ A full breakdown of testing procedures is available in [`TESTING.md`](TESTING.md
 
 ### **Key Tests**
 
-✔ **CRUD Operations** – Create, edit, delete tracks, comments, and reviews.
-✔ **Filtering & Searching** – Ensure smooth user navigation.
-✔ **User Role Access Control** – Reviewers cannot modify tracks.
-✔ **Authentication & Authorization** – Secure login/logout & user permissions.
+✔ **CRUD Operations** – Create, edit, delete tracks, comments, and reviews.  
+✔ **Filtering & Searching** – Ensure smooth user navigation.  
+✔ **User Role Access Control** – Reviewers and Regular users cannot modify tracks.  
+✔ **Authentication & Authorization** – Secure login/logout & user permissions.  
 ✔ **Responsiveness** – Cross-browser and mobile compatibility.
 
 ---
