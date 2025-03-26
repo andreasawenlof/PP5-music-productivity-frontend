@@ -9,12 +9,15 @@ import Alert from 'react-bootstrap/Alert';
 import formStyles from '../../components/Forms.module.css';
 import btnStyles from '../../components/Button.module.css';
 import { useAuth } from '../../contexts/AuthContext';
-import Select from 'react-select';
-import selectStyles from '../../components/DarkThemeSelect.module.css';
+import { useMessage } from '../../contexts/MessageContext';
 
 const CreateTrack = () => {
     const navigate = useNavigate();
     const { user } = useAuth();
+
+    // We'll use setTempMessage for success, setMessage for global immediate errors
+    const { setTempMessage, setMessage } = useMessage();
+
     const [albums, setAlbums] = useState([]);
     const [moods, setMoods] = useState([]);
     const [genres, setGenres] = useState([]);
@@ -23,13 +26,32 @@ const CreateTrack = () => {
 
     const assignedComposer = user?.username || '';
 
+    // useActionState for form submission
     const [state, formAction] = useActionState(
         async (prev, formData) => {
             try {
+                // Attach composer name
                 formData.assigned_composer_username = user.username;
+
+                // Attempt to create track
                 const response = await axiosReq.post('/api/tracks/', formData);
+
+                // On success: set "next-page" flash + navigate
+                setTempMessage({
+                    type: 'success',
+                    text: 'Track created successfully!',
+                });
                 navigate(`/tracks/${response.data.id}`);
             } catch (err) {
+                console.error('Create Track error:', err);
+
+                // 1) Show immediate global flash
+                setMessage({
+                    type: 'danger',
+                    text: 'Failed to create track. Please try again.',
+                });
+
+                // 2) Also store a local error for inline alert
                 return { error: 'Failed to create track. Please try again.' };
             }
         },
@@ -58,7 +80,6 @@ const CreateTrack = () => {
                 console.error('Failed to fetch data:', err);
             }
         };
-
         fetchData();
     }, []);
 
@@ -68,47 +89,36 @@ const CreateTrack = () => {
         }
     }, [user, navigate]);
 
-    if (user === undefined) return null; // Prevent rendering until user loads
+    // Wait for user data
+    if (user === undefined) return null;
 
     return (
         <Container className={styles.createTrackContainer}>
             <h2 className='text-center mb-4'>🎼 Create a New Track</h2>
+
+            {/* If useActionState returned { error: '...' }, show it inline here */}
             {state.error && <Alert variant='danger'>{state.error}</Alert>}
+
             <Form
-                className={`${formStyles.formContainer}`}
+                className={formStyles.formContainer}
                 action={formAction}
             >
                 <Form.Group controlId='title'>
                     <Form.Label>Track Title</Form.Label>
                     <Form.Control
-                        className={`${formStyles.formInput}`}
+                        className={formStyles.formInput}
                         type='text'
                         name='title'
                         required
                     />
                 </Form.Group>
-                {/*                 
-                <Form.Group controlId='album'>
-                    <Form.Label>Album Name</Form.Label>
-                    <Form.Select
-                        className={`${formStyles.formInput}`}
-                        name='album'
-                    >
-                        <option value=''>No Album</option> {/* Add this line */}
-                {/* {albums.map((album) => (
-                            <option
-                                key={album.id}
-                                value={album.id}
-                            >
-                                {album.title}
-                            </option>
-                        ))}
-                    </Form.Select>
-                </Form.Group> */}
+
+                {/* Additional form fields (album, mood, etc.) can be re-added here */}
+
                 <Form.Group controlId='assignedComposer'>
                     <Form.Label>Assigned Composer</Form.Label>
                     <Form.Control
-                        className={`text-white`}
+                        className='text-white'
                         readOnly
                         plaintext
                         type='text'
@@ -116,10 +126,11 @@ const CreateTrack = () => {
                         defaultValue={assignedComposer}
                     />
                 </Form.Group>
+
                 <Form.Group controlId='mood'>
                     <Form.Label>Mood</Form.Label>
                     <Form.Select
-                        className={`${formStyles.formInput}`}
+                        className={formStyles.formInput}
                         name='mood'
                     >
                         {moods.map((mood) => (
@@ -132,10 +143,11 @@ const CreateTrack = () => {
                         ))}
                     </Form.Select>
                 </Form.Group>
+
                 <Form.Group controlId='genre'>
                     <Form.Label>Genre</Form.Label>
                     <Form.Select
-                        className={`${formStyles.formInput}`}
+                        className={formStyles.formInput}
                         name='genre'
                     >
                         {genres.map((genre) => (
@@ -148,22 +160,24 @@ const CreateTrack = () => {
                         ))}
                     </Form.Select>
                 </Form.Group>
+
                 <Form.Group controlId='project_type'>
                     <Form.Label>Project Type</Form.Label>
                     <Form.Select
-                        className={`${formStyles.formInput}`}
+                        className={formStyles.formInput}
                         name='project_type'
                     >
-                        {projectTypes.map((projectType) => (
+                        {projectTypes.map((pt) => (
                             <option
-                                key={projectType.id}
-                                value={projectType.id}
+                                key={pt.id}
+                                value={pt.id}
                             >
-                                {projectType.name}
+                                {pt.name}
                             </option>
                         ))}
                     </Form.Select>
                 </Form.Group>
+
                 <Form.Group controlId='instruments'>
                     <Form.Label>Instruments</Form.Label>
                     {instruments.map((instrument) => (
@@ -176,10 +190,11 @@ const CreateTrack = () => {
                         />
                     ))}
                 </Form.Group>
+
                 <Form.Group controlId='status'>
                     <Form.Label>Status</Form.Label>
                     <Form.Select
-                        className={`${formStyles.formInput}`}
+                        className={formStyles.formInput}
                         name='status'
                     >
                         <option value='not_started'>Not Started</option>
@@ -192,6 +207,7 @@ const CreateTrack = () => {
                         </option>
                     </Form.Select>
                 </Form.Group>
+
                 <Form.Group controlId='vocals_needed'>
                     <Form.Check
                         type='checkbox'
@@ -199,14 +215,16 @@ const CreateTrack = () => {
                         label='Vocals Needed'
                     />
                 </Form.Group>
+
                 <Form.Group controlId='notes'>
                     <Form.Label>Notes</Form.Label>
                     <Form.Control
-                        className={`${formStyles.textAreaInput}`}
+                        className={formStyles.textAreaInput}
                         type='textarea'
                         name='notes'
                     />
                 </Form.Group>
+
                 <Button
                     type='submit'
                     className={`${btnStyles.postButton} mt-3`}

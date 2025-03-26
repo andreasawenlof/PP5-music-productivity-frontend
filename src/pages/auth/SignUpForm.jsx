@@ -8,6 +8,7 @@ import axios from 'axios';
 import { useAuth } from '../../contexts/AuthContext';
 import { Navigate } from 'react-router-dom';
 import useAuthRedirect from '../../hooks/useAuthRedirect';
+import { useMessage } from '../../contexts/MessageContext';
 
 const SignUpForm = () => {
     const [signUpData, setSignUpData] = useState({
@@ -20,6 +21,7 @@ const SignUpForm = () => {
     const [errors, setErrors] = useState({});
 
     const navigate = useNavigate();
+    const { setTempMessage, setMessage } = useMessage();
 
     const isLoading = useAuthRedirect();
     if (isLoading) return null;
@@ -35,9 +37,17 @@ const SignUpForm = () => {
         event.preventDefault();
         try {
             await axios.post('/dj-rest-auth/registration/', signUpData);
+            setTempMessage({
+                type: 'success',
+                text: 'Account created successfully! You can now log in.',
+            });
             navigate('/login');
         } catch (err) {
-            setErrors(err.response?.data);
+            setErrors(err.response?.data) || {};
+            setMessage({
+                type: 'danger',
+                text: 'Please correct the form errors below.',
+            });
         }
     };
 
