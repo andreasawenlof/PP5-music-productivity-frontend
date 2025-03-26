@@ -6,6 +6,7 @@ import styles from './ProfilePage.module.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
+import Alert from 'react-bootstrap/Alert';
 import Spinner from 'react-bootstrap/Spinner';
 import btnStyles from '../../components/Button.module.css';
 import formStyles from '../../components/Forms.module.css';
@@ -14,19 +15,16 @@ import { useMessage } from '../../contexts/MessageContext';
 const ProfilePage = () => {
     const { id } = useParams();
     const { user } = useAuth();
-    const navigate = useNavigate();
-
-    // Use global message context for success & error
-    const { setMessage, setTempMessage } = useMessage();
-
     const [profile, setProfile] = useState(null);
     const [displayName, setDisplayName] = useState('');
     const [bio, setBio] = useState('');
     const [avatar, setAvatar] = useState(null);
-    const [editMode, setEditMode] = useState(false);
+    const [editMode, setEditMode] = useState(false); // ✅ Toggle Edit Mode
+    const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
+    const { setMessage, setTempMessage } = useMessage();
 
-    // 1) Fetch profile data
     useEffect(() => {
         const fetchProfile = async () => {
             try {
@@ -36,49 +34,37 @@ const ProfilePage = () => {
                 setBio(data.bio);
             } catch (err) {
                 console.error('❌ Error fetching profile:', err);
-                // Set a one-time error message for the *next* page
-                setTempMessage({
-                    type: 'danger',
-                    text: 'Failed to load profile.',
-                });
+                setError('Failed to load profile.');
                 navigate('/404');
             } finally {
                 setLoading(false);
             }
         };
         fetchProfile();
-    }, [id, navigate, setTempMessage]);
+    }, [id]);
 
-    // 2) Handle updating the profile
     const handleUpdate = async (e) => {
         e.preventDefault();
         try {
             const formData = new FormData();
-            if (displayName !== profile.display_name) {
+            if (displayName !== profile.display_name)
                 formData.append('display_name', displayName);
-            }
-            if (bio !== profile.bio) {
-                formData.append('bio', bio);
-            }
-            if (avatar) {
-                formData.append('avatar', avatar);
-            }
+            if (bio !== profile.bio) formData.append('bio', bio);
+            if (avatar) formData.append('avatar', avatar);
 
             const { data } = await axiosRes.patch(
                 `/api/profiles/${id}/`,
                 formData
             );
             setProfile(data);
-            setEditMode(false);
-
-            // Show a success message on the same page
+            setEditMode(false); // ✅ Exit Edit Mode
             setMessage({
                 type: 'success',
                 text: 'Profile updated successfully!',
             });
         } catch (err) {
             console.error('❌ Error updating profile:', err);
-            // Show an immediate error on the same page
+            setError('Failed to update profile.');
             setMessage({
                 type: 'danger',
                 text: 'Failed to update profile. Please try again.',
@@ -86,36 +72,28 @@ const ProfilePage = () => {
         }
     };
 
-    // 3) Cancel edits
     const handleCancel = () => {
-        setEditMode(false);
+        setEditMode(false); // ✅ Exit Edit Mode without saving
         setDisplayName(profile.display_name);
         setBio(profile.bio);
-        setAvatar(null); // optional: clear selected file
     };
 
-    // 4) Render states
-    if (loading) {
+    if (loading)
         return (
             <Spinner
                 animation='border'
                 className='d-block mx-auto mt-5'
             />
         );
-    }
-
-    if (!profile) {
-        // If profile is null after loading,
-        // you might already have navigated to /404.
-        return <p className='text-center'>Profile not found.</p>;
-    }
+    if (!profile) return <p className='text-center'>Profile not found.</p>;
 
     return (
         <Container className={styles.profileContainer}>
             <h2 className='text-center mb-4'>👤 Profile</h2>
+            {error && <Alert variant='danger'>{error}</Alert>}
 
             <div className={styles.profileContent}>
-                {/* Avatar Section (always visible) */}
+                {/* ✅ Avatar Upload Always Available */}
                 <div className={styles.avatarWrapper}>
                     <img
                         src={profile.avatar}
@@ -124,7 +102,7 @@ const ProfilePage = () => {
                     />
                 </div>
 
-                {/* Toggle "View" vs "Edit" mode */}
+                {/* ✅ Toggle Between "View" and "Edit" Mode */}
                 {editMode ? (
                     <Form
                         onSubmit={handleUpdate}
@@ -149,7 +127,6 @@ const ProfilePage = () => {
                                 onChange={(e) => setBio(e.target.value)}
                             />
                         </Form.Group>
-
                         <Form.Control
                             type='file'
                             accept='image/*'
@@ -160,7 +137,7 @@ const ProfilePage = () => {
                         <div className='d-flex flex-column'>
                             <Button
                                 type='submit'
-                                className={btnStyles.postButton}
+                                className={`${btnStyles.postButton}`}
                             >
                                 Save Changes
                             </Button>
@@ -193,7 +170,7 @@ const ProfilePage = () => {
                         )}
                         {user && user.profile_id === profile.id && (
                             <Button
-                                onClick={() => setEditMode(true)}
+                                onClick={() => setEditMode(true)} // ✅ Enables edit mode
                                 className={btnStyles.postButton}
                             >
                                 Edit Profile
